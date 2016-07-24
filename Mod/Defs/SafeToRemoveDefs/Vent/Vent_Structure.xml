@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Buildings>
+	<ThingDef ParentName="BuildingBase">
+		<defName>CP_Vent</defName>
+		<label>vent</label>
+		<description>A simple vent built into a wall for equalizing the temperature between two rooms without allowing people to walk between them.</description>
+		<thingClass>CorePanda.Building_Vent</thingClass>
+		<graphicData>
+			<texPath>Cupro/Object/Structure/Vent/Vent</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+		<altitudeLayer>Pawn</altitudeLayer>
+		<passability>Impassable</passability>
+		<useHitPoints>False</useHitPoints>
+		<statBases>
+			<Flammability>1.0</Flammability>
+			<Beauty>1</Beauty>
+			<WorkToMake>600</WorkToMake>
+		</statBases>
+		<stuffCategories>
+			<li>Woody</li>
+			<li>Metallic</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>20</costStuffCount>
+		<placeWorkers>
+			<li>CorePanda.PlaceWorker_VentInWall</li>
+		</placeWorkers>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<building>
+			<isEdifice>false</isEdifice>
+		</building>
+		<designationCategory>Temperature</designationCategory>
+		<tickerType>Rare</tickerType>
+		<comps>
+			<li>
+				<compClass>CorePanda.CompWallAddon</compClass>
+			</li>
+		</comps>
+	</ThingDef>
+</Buildings>

@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Resources>
+
+
+	<!--================== Bases ==================-->
+  
+	
+  <ThingDef Name="ResourceBase" Abstract="True">
+    <thingClass>ThingWithComps</thingClass>
+    <label>unspecified resource</label>
+    <category>Item</category>
+    <resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <useHitPoints>true</useHitPoints>
+    <selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+    <stackLimit>75</stackLimit>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+    </comps>
+    <alwaysHaulable>true</alwaysHaulable>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <rotatable>false</rotatable>
+    <pathCost>15</pathCost>
+  </ThingDef>
+
+
+	<!-- ========================== Inheritors ============================== -->
+
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>CP_BottledWater</defName>
+		<label>bottled fresh water</label>
+		<description>Crisp and clean water from deep underground, bottled up and ready for consumption. Guaranteed to be 20% more refreshing than regular water.</description>
+		<graphicData>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<texPath>Cupro/Item/Usable/BottledWater</texPath>
+		</graphicData>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<stackLimit>24</stackLimit>
+		<statBases>
+			<DeteriorationRate>0</DeteriorationRate>
+			<MaxHitPoints>25</MaxHitPoints>
+			<MarketValue>1</MarketValue>
+			<SellPriceFactor>0.25</SellPriceFactor>
+		</statBases>
+		<thingCategories>
+			<li>CP_Drinks</li>
+		</thingCategories>
+		<ingestible>
+			<preferability>NeverForNutrition</preferability>
+			<foodType>Fluid</foodType>
+			<joy>0.05</joy>
+			<nutrition>0.01</nutrition>
+			<joyKind>Gluttonous</joyKind>
+			<maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+			<soundEat>Ingest_Beer</soundEat>
+			<isPleasureDrug>false</isPleasureDrug>
+		</ingestible>
+		<tradeTags>
+			<li>Exotic</li>
+			<li>AJO_JoyItem</li>
+		</tradeTags>
+	</ThingDef>
+
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>CP_FreshWaterBucket</defName>
+		<label>bucket of fresh water</label>
+		<description>Fresh water from a well.</description>
+		<graphicData>
+			<texPath>Cupro/Item/Material/WaterBucket</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Metal_Drop</soundDrop>
+		<stackLimit>10</stackLimit>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<MarketValue>1</MarketValue>
+		</statBases>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+	</ThingDef>
+
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>CP_RainbowPetals</defName>
+		<label>rainbow petals</label>
+		<description>A small bundle of multi-colored flower petals.</description>
+		<graphicData>
+			<texPath>Cupro/Item/Material/RainbowPetals</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<MarketValue>2</MarketValue>
+		</statBases>
+		<stackLimit>100</stackLimit>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+		<tradeTags>
+			<li>Exotic</li>
+		</tradeTags>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>CP_Copper</defName>
+		<label>copper</label>
+		<description>An important metal when dealing with temperature and electricity. Can also be used for building structures, tools, and weapons.</description>
+		<graphicData>
+			<texPath>Cupro/Item/Material/Copper</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Metal_Drop</soundDrop>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<MarketValue>1.5</MarketValue>
+			<Beauty>1</Beauty>
+			<Cleanliness>3</Cleanliness>
+			<SharpDamageMultiplier>0.7</SharpDamageMultiplier>
+			<BluntDamageMultiplier>0.7</BluntDamageMultiplier>
+		</statBases>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+		<stuffProps>
+			<categories>
+				<li>Metallic</li>
+			</categories>
+			<constructEffect>ConstructMetal</constructEffect>
+			<color>(100,80,20)</color>
+			<soundImpactStuff>BulletImpactMetal</soundImpactStuff>
+			<soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+			<soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+			<statFactors>
+				<MaxHitPoints>0.8</MaxHitPoints>
+				<Beauty>2</Beauty>
+				<Cleanliness>1.25</Cleanliness>
+				<Flammability>0.2</Flammability>
+				<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
+			</statFactors>
+			<smeltable>true</smeltable>
+		</stuffProps>
+		<tradeTags>
+			<li>Exotic</li>
+		</tradeTags>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>CP_QuartzSpawner</defName>
+		<thingClass>CorePanda.Item_QuartzSpawner</thingClass>
+		<label>quartz</label>
+		<description>null</description>
+		<graphicData>
+			<texPath>Cupro/Null</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<MarketValue>0</MarketValue>
+		</statBases>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>CP_Quartz</defName>
+		<label>quartz</label>
+		<description>A common clear-white crystal.</description>
+		<graphicData>
+			<texPath>Cupro/Item/Material/Quartz</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>ChunkRock_Drop</soundInteract>
+		<soundDrop>ChunkRock_Drop</soundDrop>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<Beauty>1</Beauty>
+			<MarketValue>5</MarketValue>
+		</statBases>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>CP_FusedQuartz</defName>
+		<label>fused quartz</label>
+		<description>A sheet of quartz which has been melted and shaped.</description>
+		<graphicData>
+			<texPath>Cupro/Item/Material/FusedQuartz</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Metal_Drop</soundDrop>
+		<stackLimit>50</stackLimit>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Beauty>1</Beauty>
+			<MarketValue>15</MarketValue>
+		</statBases>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<stuffProps>
+			<categories>
+				<li>CP_Glass</li>
+			</categories>
+			<statOffsets>
+				<WorkToMake>100</WorkToMake>
+				<Beauty>2</Beauty>
+			</statOffsets>
+			<statFactors>
+				<Beauty>1.1</Beauty>
+				<MaxHitPoints>0.25</MaxHitPoints>
+				<Flammability>0</Flammability>
+				<WorkToMake>1.25</WorkToMake>
+			</statFactors>
+			<color>(175,220,230,130)</color>
+			<soundImpactStuff>BulletImpactMetal</soundImpactStuff>
+			<stuffAdjective>fused quartz</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>CP_Glass</defName>
+		<label>glass</label>
+		<description>A thick sheet of glass made from melted sand.</description>
+		<graphicData>
+			<texPath>Cupro/Item/Material/Glass</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Metal_Drop</soundDrop>
+		<stackLimit>50</stackLimit>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Beauty>1</Beauty>
+			<MarketValue>5</MarketValue>
+		</statBases>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<stuffProps>
+			<categories>
+				<li>CP_Glass</li>
+			</categories>
+			<statOffsets>
+				<WorkToMake>100</WorkToMake>
+				<Beauty>2</Beauty>
+			</statOffsets>
+			<statFactors>
+				<Beauty>1.1</Beauty>
+				<MaxHitPoints>0.25</MaxHitPoints>
+				<Flammability>0</Flammability>
+				<WorkToMake>1.25</WorkToMake>
+			</statFactors>
+			<color>(180,190,200,130)</color>
+			<soundImpactStuff>BulletImpactMetal</soundImpactStuff>
+			<stuffAdjective>glass</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>CP_Sand</defName>
+		<label>sand</label>
+		<description>Small particles of rocks and minerals. Most commonly used to make glass, bricks, and mudbricks.</description>
+		<graphicData>
+			<texPath>Cupro/Item/Material/Sand</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<stackLimit>100</stackLimit>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<MarketValue>0.01</MarketValue>
+			<Flammability>0</Flammability>
+		</statBases>
+		<soundInteract>Silver_Drop</soundInteract>
+		<soundDrop>Silver_Drop</soundDrop>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+		<tradeability>Sellable</tradeability>
+		<!-- So traders don't arrive carrying 10k units -->
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>CP_Gravel</defName>
+		<label>gravel</label>
+		<description>Small rock fragments.</description>
+		<graphicData>
+			<texPath>Cupro/Item/Material/Gravel</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<stackLimit>100</stackLimit>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<MarketValue>0.01</MarketValue>
+			<Flammability>0</Flammability>
+		</statBases>
+		<soundInteract>Silver_Drop</soundInteract>
+		<soundDrop>Silver_Drop</soundDrop>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+		<tradeability>Sellable</tradeability>
+		<!-- So traders don't arrive carrying 10k units -->
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>CP_Dirt</defName>
+		<label>dirt</label>
+		<description>Basic dirt found just about everywhere. Only really useful for making mudbricks.</description>
+		<graphicData>
+			<texPath>Cupro/Item/Material/Dirt</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<stackLimit>100</stackLimit>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<MarketValue>0.01</MarketValue>
+			<Flammability>0</Flammability>
+		</statBases>
+		<soundInteract>Silver_Drop</soundInteract>
+		<soundDrop>Silver_Drop</soundDrop>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+		<tradeability>Sellable</tradeability>
+		<!-- So traders don't arrive carrying 10k units -->
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>CP_Clay</defName>
+		<label>clay</label>
+		<description>A collection of dust and silt held together with water. Useful for making bricks.</description>
+		<graphicData>
+			<texPath>Cupro/Item/Material/Clay</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<stackLimit>100</stackLimit>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<MarketValue>0.01</MarketValue>
+			<Flammability>0</Flammability>
+		</statBases>
+		<soundInteract>Silver_Drop</soundInteract>
+		<soundDrop>Silver_Drop</soundDrop>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+		<tradeability>Sellable</tradeability>
+		<!-- So traders don't arrive carrying 10k units -->
+	</ThingDef>
+
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>CP_RawRubber</defName>
+		<label>raw rubber</label>
+		<description>A resinous tuber high in natural latex. Can be converted into rubber by baking it.</description>
+		<graphicData>
+			<texPath>Cupro/Item/Material/JadeDesat</texPath>
+			<color>(185,185,140)</color>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<MarketValue>2</MarketValue>
+			<DeteriorationRate>1</DeteriorationRate>
+		</statBases>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+		<stackLimit>75</stackLimit>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>8</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>CP_Rubber</defName>
+		<label>rubber</label>
+		<description>A resilient, stretchy, waterproof material useful in electronics.</description>
+		<graphicData>
+			<texPath>Cupro/Item/Material/Rubber</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<MarketValue>5</MarketValue>
+		</statBases>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<stackLimit>150</stackLimit>
+	</ThingDef>
+
+
+</Resources>
+
+
+
+
+
+

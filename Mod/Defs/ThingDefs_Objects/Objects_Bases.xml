@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef Name="BuildingBase" Abstract="True">
+    <category>Building</category>
+    <thingClass>Building</thingClass>
+    <soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+    <selectable>true</selectable>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <repairEffect>Repair</repairEffect>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <filthLeaving>BuildingRubble</filthLeaving>
+  </ThingDef>
+
+  <ThingDef Name="FurnitureBase" ParentName="BuildingBase" Abstract="True">
+    <comps>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+    </comps>
+    <DesignationCategory>Furniture</DesignationCategory>
+    <minifiedDef>MinifiedFurniture</minifiedDef>
+    <tradeTags>
+      <li>Furniture</li>
+    </tradeTags>
+  </ThingDef>
+  
+  <ThingDef Name="HighQualityFurnitureBase" ParentName="BuildingBase" Abstract="True">
+    <comps>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Art">
+        <nameMaker>ArtName_Furniture</nameMaker>
+        <descriptionMaker>ArtDescription_Furniture</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+    </comps>
+    <inspectorTabs>
+      <li>ITab_Art</li>
+    </inspectorTabs>
+    <DesignationCategory>Furniture</DesignationCategory>
+    <minifiedDef>MinifiedFurniture</minifiedDef>
+  </ThingDef>
+	
+	
+	<!-- ========================== cP Bases ============================== -->
+	
+	
+	<ThingDef Name="ResourcePitBase" ParentName="BuildingBase" Abstract="True">
+		<label>natural resource pit</label>
+		<Description>A pit for collecting natural resources.</Description>
+		<graphicData>
+			<texPath>Cupro/Object/Station/ResourcePit/ResourcePit</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3,3)</drawSize>
+		</graphicData>
+		<uiIconPath>Cupro/Object/Station/ResourcePit/ResourcePit_MenuIcon</uiIconPath>
+		<constructEffect>ConstructDirt</constructEffect>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<useHitPoints>false</useHitPoints>
+		<fillPercent>0</fillPercent>
+		<statBases>
+			<Flammability>0</Flammability>
+		</statBases>
+		<Size>(1,1)</Size>
+		<Passability>PassThroughOnly</Passability>
+		<pathCost>60</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,1)</interactionCellOffset>
+	</ThingDef>
+
+</Defs>

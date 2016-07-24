@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RecipeDefs>
+
+	<RecipeDef>
+		<defName>CP_BottleWater</defName>
+		<label>bottle fresh water</label>
+		<description>Bottle fresh water for consumption. </description>
+		<jobString>Bottling fresh water</jobString>
+		<workSpeedStat>BrewingSpeed</workSpeedStat>
+		<workAmount>100</workAmount>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_Brewing</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CP_FreshWaterBucket</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>CP_FreshWaterBucket</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<CP_BottledWater>12</CP_BottledWater>
+		</products>
+		<recipeUsers>
+			<li>CP_TableSimpleCrafting</li>
+			<li>FueledStove</li>
+			<li>ElectricStove</li>
+			<li>Brewery</li>
+		</recipeUsers>
+		<workSkill>Cooking</workSkill>
+	</RecipeDef>
+
+	<RecipeDef>
+		<defName>CP_GatherWater</defName>
+		<label>gather water</label>
+		<description>Gather fresh water from deep underground.</description>
+		<jobString>Gathering water.</jobString>
+		<workAmount>300</workAmount>
+		<workSkill>Crafting</workSkill>
+		<products>
+			<CP_FreshWaterBucket>1</CP_FreshWaterBucket>
+		</products>
+	</RecipeDef>
+
+	<RecipeDef Name="CP_MakeGlassBase" Abstract="True">
+		<label>make glass</label>
+		<jobString>Making glass.</jobString>
+		<workSpeedStat>SmeltingSpeed</workSpeedStat>
+		<effectWorking>Smelt</effectWorking>
+		<soundWorking>Recipe_Smelt</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CP_Sand</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>CP_Sand</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+	<RecipeDef ParentName="CP_MakeGlassBase">
+		<defName>CP_MakeGlassSmelter</defName>
+		<description>Use intense heat to melt sand into stable glass sheets. Makes 5 sheets.</description>
+		<workAmount>1200</workAmount>
+		<products>
+			<CP_Glass>5</CP_Glass>
+		</products>
+		<recipeUsers>
+			<li>ElectricSmelter</li>
+		</recipeUsers>
+	</RecipeDef>
+	<RecipeDef ParentName="CP_MakeGlassBase">
+		<defName>CP_MakeGlassFurnace</defName>
+		<description>Use intense heat to melt sand into stable glass sheets. Makes 2 sheets.</description>
+		<workAmount>1700</workAmount>
+		<products>
+			<CP_Glass>2</CP_Glass>
+		</products>
+		<recipeUsers>
+			<li>CP_Furnace</li>
+		</recipeUsers>
+	</RecipeDef>
+
+
+	<RecipeDef>
+		<defName>CP_FuseQuartz</defName>
+		<label>fuse quartz</label>
+		<description>Use intense heat to melt quartz into stable glass sheets. Makes 5 sheets.</description>
+		<jobString>Fusing quartz.</jobString>
+		<workAmount>1800</workAmount>
+		<workSpeedStat>SmeltingSpeed</workSpeedStat>
+		<effectWorking>Smelt</effectWorking>
+		<soundWorking>Recipe_Smelt</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CP_Quartz</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<products>
+			<CP_FusedQuartz>5</CP_FusedQuartz>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>CP_Quartz</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<recipeUsers>
+			<li>ElectricSmelter</li>
+		</recipeUsers>
+	</RecipeDef>
+
+	<RecipeDef>
+		<defName>CP_CrushGravel</defName>
+		<label>crush chunks into gravel</label>
+		<description>Crush chunks into gravel.</description>
+		<jobString>Making gravel.</jobString>
+		<workAmount>1000</workAmount>
+		<workSpeedStat>StonecuttingSpeed</workSpeedStat>
+		<workSkill>Mining</workSkill>
+		<workSkillLearnFactor>0.10</workSkillLearnFactor>
+		<effectWorking>CutStone</effectWorking>
+		<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>StoneChunks</li>
+					</categories>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>StoneChunks</li>
+			</categories>
+		</fixedIngredientFilter>
+		<products>
+			<CP_Gravel>8</CP_Gravel>
+		</products>
+		<recipeUsers>
+			<li>TableStonecutter</li>
+		</recipeUsers>
+	</RecipeDef>
+
+	<RecipeDef>
+		<defName>CP_CrushSand</defName>
+		<label>crush gravel into sand</label>
+		<description>Crush gravel into sand.</description>
+		<jobString>Making sand.</jobString>
+		<workAmount>1200</workAmount>
+		<workSpeedStat>StonecuttingSpeed</workSpeedStat>
+		<workSkill>Mining</workSkill>
+		<workSkillLearnFactor>0.10</workSkillLearnFactor>
+		<effectWorking>CutStone</effectWorking>
+		<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CP_Gravel</li>
+					</thingDefs>
+				</filter>
+				<count>12</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>CP_Gravel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<CP_Sand>8</CP_Sand>
+		</products>
+		<recipeUsers>
+			<li>TableStonecutter</li>
+		</recipeUsers>
+	</RecipeDef>
+
+	<RecipeDef>
+		<defName>CP_CrushClay</defName>
+		<label>crush sand into clay</label>
+		<description>Crush sand into a fine dust, and mix with water.</description>
+		<jobString>Making clay.</jobString>
+		<workAmount>1200</workAmount>
+		<workSpeedStat>StonecuttingSpeed</workSpeedStat>
+		<workSkill>Mining</workSkill>
+		<workSkillLearnFactor>0.10</workSkillLearnFactor>
+		<effectWorking>CutStone</effectWorking>
+		<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CP_Sand</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CP_FreshWaterBucket</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>CP_Sand</li>
+				<li>CP_FreshWaterBucket</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<CP_Clay>10</CP_Clay>
+		</products>
+		<recipeUsers>
+			<li>TableStonecutter</li>
+		</recipeUsers>
+	</RecipeDef>
+
+
+	<RecipeDef>
+		<defName>CP_DigSand</defName>
+		<label>dig up sand</label>
+		<description>Dig up the sand in this area.</description>
+		<jobString>Digging.</jobString>
+		<workAmount>750</workAmount>
+		<workSpeedStat>MiningSpeed</workSpeedStat>
+		<effectWorking>ConstructDirt</effectWorking>
+		<soundWorking>Interact_ConstructDirt</soundWorking>
+		<workSkill>Mining</workSkill>
+		<workSkillLearnFactor>0.03</workSkillLearnFactor>
+		<products>
+			<CP_Sand>10</CP_Sand>
+		</products>
+		<recipeUsers>
+			<li>CP_SandPit</li>
+		</recipeUsers>
+	</RecipeDef>
+
+	<RecipeDef>
+		<defName>CP_DigClay</defName>
+		<label>dig up clay</label>
+		<description>Dig up the clay in this area.</description>
+		<jobString>Digging.</jobString>
+		<workAmount>750</workAmount>
+		<workSpeedStat>MiningSpeed</workSpeedStat>
+		<effectWorking>ConstructDirt</effectWorking>
+		<soundWorking>Interact_ConstructDirt</soundWorking>
+		<workSkill>Mining</workSkill>
+		<workSkillLearnFactor>0.03</workSkillLearnFactor>
+		<products>
+			<CP_Clay>10</CP_Clay>
+		</products>
+		<recipeUsers>
+			<li>CP_ClayPit</li>
+		</recipeUsers>
+	</RecipeDef>
+
+	<RecipeDef>
+		<defName>CP_DigDirt</defName>
+		<label>dig up dirt</label>
+		<description>Dig up the dirt in this area.</description>
+		<jobString>Digging.</jobString>
+		<workAmount>750</workAmount>
+		<workSpeedStat>MiningSpeed</workSpeedStat>
+		<effectWorking>ConstructDirt</effectWorking>
+		<soundWorking>Interact_ConstructDirt</soundWorking>
+		<workSkill>Mining</workSkill>
+		<workSkillLearnFactor>0.03</workSkillLearnFactor>
+		<products>
+			<CP_Dirt>10</CP_Dirt>
+		</products>
+		<recipeUsers>
+			<li>CP_DirtPit</li>
+			<li>CP_ClayPit</li>
+			<li>CP_GravelPit</li>
+		</recipeUsers>
+	</RecipeDef>
+
+	<RecipeDef>
+		<defName>CP_DigGravel</defName>
+		<label>dig up gravel</label>
+		<description>Dig up the gravel in this area.</description>
+		<jobString>Digging.</jobString>
+		<workAmount>1000</workAmount>
+		<workSpeedStat>MiningSpeed</workSpeedStat>
+		<effectWorking>ConstructDirt</effectWorking>
+		<soundWorking>Interact_ConstructDirt</soundWorking>
+		<workSkill>Mining</workSkill>
+		<workSkillLearnFactor>0.03</workSkillLearnFactor>
+		<products>
+			<CP_Gravel>10</CP_Gravel>
+		</products>
+		<recipeUsers>
+			<li>CP_GravelPit</li>
+		</recipeUsers>
+	</RecipeDef>
+
+	<RecipeDef>
+		<defName>CP_RefineRubber</defName>
+		<label>refine rubber</label>
+		<description>Extract and bake raw rubber into usable sheets.</description>
+		<jobString>Refining rubber.</jobString>
+		<workAmount>800</workAmount>
+		<workSpeedStat>CookSpeed</workSpeedStat>
+		<effectWorking>Smelt</effectWorking>
+		<soundWorking>Recipe_Smelt</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CP_RawRubber</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<products>
+			<CP_Rubber>5</CP_Rubber>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>CP_RawRubber</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<thingDefs>
+				<li>CP_RawRubber</li>
+			</thingDefs>
+		</defaultIngredientFilter>
+		<recipeUsers>
+			<li>CP_Furnace</li>
+		</recipeUsers>
+		<skillRequirements>
+			<li>
+				<skill>Cooking</skill>
+				<minLevel>6</minLevel>
+			</li>
+		</skillRequirements>
+		<workSkill>Cooking</workSkill>
+	</RecipeDef>
+
+
+</RecipeDefs>

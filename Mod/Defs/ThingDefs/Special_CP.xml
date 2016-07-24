@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefinitions>
+
+	<ThingDef ParentName="BuildingBase">
+		<DefName>CP_WindowSpawner</DefName>
+		<label>window</label>
+		<Description>A simple window for allowing natural light into a room. Can be built into a wall.</Description>
+		<thingClass>CorePanda.Building_WindowSpawner</thingClass>
+		<graphicData>
+			<texPath>Cupro/Object/Structure/Window/Window</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+		</graphicData>
+		<stuffCategories>
+			<li>CP_Glass</li>
+		</stuffCategories>
+		<costStuffCount>2</costStuffCount>
+		<CostList>
+			<Steel>10</Steel>
+		</CostList>
+		<AltitudeLayer>Pawn</AltitudeLayer>
+		<statBases>
+			<WorkToMake>200</WorkToMake>
+		</statBases>
+		<Size>(1,1)</Size>
+		<DesignationCategory>Structure</DesignationCategory>
+		<selectable>true</selectable>
+		<building>
+			<isEdifice>false</isEdifice>
+		</building>
+		<placeWorkers>
+			<li>CorePanda.PlaceWorker_WindowInWall</li>
+		</placeWorkers>
+	</ThingDef>
+
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CP_WindowGlower</defName>
+		<label>light from a window</label>
+		<thingClass>CorePanda.Building_WindowGlower</thingClass>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Cupro/Null</texPath>
+			<drawSize>(0,0)</drawSize>
+		</graphicData>
+		<size>(1,1)</size>
+		<useHitPoints>false</useHitPoints>
+		<statBases>
+			<Flammability>0</Flammability>
+		</statBases>
+		<altitudeLayer>Floor</altitudeLayer>
+		<passability>Standable</passability>
+		<selectable>false</selectable>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<tickerType>Rare</tickerType>
+		<building>
+			<isEdifice>false</isEdifice>
+			<deconstructible>false</deconstructible>
+		</building>
+		<comps>
+			<li>
+				<compClass>CorePanda.CompSunlight</compClass>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>8</glowRadius>
+				<glowColor>(0,0,0,0)</glowColor>
+			</li>
+		</comps>
+	</ThingDef>
+
+
+</ThingDefinitions>

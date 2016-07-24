@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CP_TableSimpleCrafting</defName>
+		<label>simple crafting table</label>
+		<ThingClass>Building_WorkTable</ThingClass>
+		<Description>A flat surface for doing simple crafting jobs.</Description>
+		<graphicData>
+			<texPath>Cupro/Object/Station/CraftingTable/CraftingTable</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,1)</drawSize>
+		</graphicData>
+		<CostList>
+			<WoodLog>15</WoodLog>
+		</CostList>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<constructEffect>ConstructWood</constructEffect>
+		<altitudeLayer>Building</altitudeLayer>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<WorkToMake>700</WorkToMake>
+			<MaxHitPoints>90</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<Beauty>3</Beauty>
+		</statBases>
+		<Size>(2,1)</Size>
+		<DesignationCategory>Production</DesignationCategory>
+		<Passability>PassThroughOnly</Passability>
+		<pathCost>60</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,1)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>CP_Well</defName>
+		<label>well</label>
+		<ThingClass>Building_WorkTable</ThingClass>
+		<Description>A well dug deep into the ground for extracting clean drinking water.</Description>
+		<graphicData>
+			<texPath>Cupro/Object/Station/Well/Well</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<damageData>
+				<rect>(0.09375,0.296875,0.796875,0.703125)</rect>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<fillPercent>0.25</fillPercent>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<stuffCategories>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>400</costStuffCount>
+		<altitudeLayer>Building</altitudeLayer>
+		<UseHitPoints>true</UseHitPoints>
+		<destroyable>true</destroyable>
+		<rotatable>true</rotatable>
+		<statBases>
+			<MaxHitPoints>2000</MaxHitPoints>
+			<WorkToMake>5000</WorkToMake>
+			<Flammability>0</Flammability>
+			<Beauty>20</Beauty>
+			<Cleanliness>10</Cleanliness>
+		</statBases>
+		<Size>(1,1)</Size>
+		<DesignationCategory>Production</DesignationCategory>
+		<Passability>PassThroughOnly</Passability>
+		<pathCost>60</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,1)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<recipes>
+			<li>CP_GatherWater</li>
+		</recipes>
+		<comps>
+			<li>
+				<compClass>CompGatherSpot</compClass>
+			</li>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+		</comps>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<DefName>CP_Furnace</DefName>
+		<label>furnace</label>
+		<ThingClass>Building_WorkTable</ThingClass>
+		<Description>A large oven for baking items.</Description>
+		<graphicData>
+			<texPath>Cupro/Object/Station/Furnace/Furnace</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(3,3)</drawSize>
+		</graphicData>
+		<uiIconPath>Cupro/Object/Station/Furnace/Furnace_MenuIcon</uiIconPath>
+		<Size>(1,1)</Size>
+		<stuffCategories>
+			<li>Stony</li>
+			<li>Metallic</li>
+		</stuffCategories>
+		<costStuffCount>100</costStuffCount>
+		<altitudeLayer>Building</altitudeLayer>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<WorkToMake>1500</WorkToMake>
+			<MaxHitPoints>200</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<Beauty>1</Beauty>
+			<Cleanliness>-5</Cleanliness>
+		</statBases>
+		<DesignationCategory>Production</DesignationCategory>
+		<fillPercent>0.5</fillPercent>
+		<Passability>PassThroughOnly</Passability>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>160.0</fuelConsumptionRate>
+				<fuelCapacity>30.0</fuelCapacity>
+				<fuelFilter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</fuelFilter>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+			</li> 
+		</comps>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+			<heatPerTickWhileWorking>0.6</heatPerTickWhileWorking>
+		</building>
+	</ThingDef>
+
+
+	<ThingDef ParentName="ResourcePitBase">
+		<defName>CP_ResourcePitSpawner</defName>
+		<Description>A pit for collecting natural resources. Must be placed on dirt, sand, or gravel.</Description>
+		<ThingClass>CorePanda.Building_ResourcePitSpawner</ThingClass>
+		<statBases>
+			<WorkToMake>1000</WorkToMake>
+		</statBases>
+		<DesignationCategory>Production</DesignationCategory>
+		<placeWorkers>
+			<li>CorePanda.PlaceWorker_DiggableResources</li>
+		</placeWorkers>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourcePitBase">
+		<defName>CP_SandPit</defName>
+		<ThingClass>Building_WorkTable</ThingClass>
+		<surfaceType>Item</surfaceType>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourcePitBase">
+		<defName>CP_ClayPit</defName>
+		<ThingClass>Building_WorkTable</ThingClass>
+		<surfaceType>Item</surfaceType>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourcePitBase">
+		<defName>CP_DirtPit</defName>
+		<ThingClass>Building_WorkTable</ThingClass>
+		<surfaceType>Item</surfaceType>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourcePitBase">
+		<defName>CP_GravelPit</defName>
+		<ThingClass>Building_WorkTable</ThingClass>
+		<surfaceType>Item</surfaceType>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+	</ThingDef>
+
+
+
+</ThingDefs>

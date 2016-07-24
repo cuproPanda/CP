@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WorkGivers>
+
+
+	<!-- ============= Crafting - misc ============= -->
+
+
+	<WorkGiverDef>
+		<defName>CP_DoBillsGatherWater</defName>
+		<label>gather water at well</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Hauling</workType>
+		<priorityInType>93</priorityInType>
+		<fixedBillGiverDefs>
+			<li>CP_Well</li>
+		</fixedBillGiverDefs>
+		<verb>gather at</verb>
+		<gerund>gathering at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>CP_DoBillsCraftingTable</defName>
+		<label>craft at simple crafting table</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>99</priorityInType>
+		<fixedBillGiverDefs>
+			<li>CP_TableSimpleCrafting</li>
+		</fixedBillGiverDefs>
+		<verb>craft at</verb>
+		<gerund>crafting at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>CP_DoBillsFurnace</defName>
+		<label>bake materials at furnace</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>97</priorityInType>
+		<fixedBillGiverDefs>
+			<li>CP_Furnace</li>
+		</fixedBillGiverDefs>
+		<verb>bake at</verb>
+		<gerund>baking at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>CP_DoBillsDigResources</defName>
+		<label>dig up natural resources from pit</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Mining</workType>
+		<priorityInType>92</priorityInType>
+		<fixedBillGiverDefs>
+			<li>CP_SandPit</li>
+			<li>CP_GravelPit</li>
+			<li>CP_DirtPit</li>
+			<li>CP_ClayPit</li>
+		</fixedBillGiverDefs>
+		<verb>dig at</verb>
+		<gerund>digging at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+
+
+
+
+
+</WorkGivers>

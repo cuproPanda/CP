@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+	<ThingDef ParentName="BuildingBase">
+    <defName>Sandbags</defName>
+    <label>sandbags</label>
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Building/Linked/Sandbags_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <linkType>Basic</linkType>
+      <linkFlags>
+        <li>Sandbags</li>
+      </linkFlags>
+    </graphicData>
+    <blueprintGraphicData>
+      <texPath>Things/Building/Linked/Sandbags_Blueprint_Atlas</texPath>
+    </blueprintGraphicData>
+    <uiIconPath>Things/Building/Linked/Sandbags_MenuIcon</uiIconPath>
+    <altitudeLayer>Building</altitudeLayer>
+    <pathCost>40</pathCost>
+    <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>0.65</fillPercent>
+    <statBases>
+      <MaxHitPoints>450</MaxHitPoints>
+      <Beauty>-10</Beauty>
+      <WorkToMake>180</WorkToMake>
+      <Flammability>0</Flammability>
+    </statBases>
+    <building>
+      <isInert>true</isInert>
+    </building>
+    <description>Cover from gunfire.</description>
+    <placingDraggableDimensions>1</placingDraggableDimensions>
+    <costList>
+      <CP_Sand>5</CP_Sand>
+    </costList>
+    <filthLeaving>SandbagRubble</filthLeaving>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <constructEffect>ConstructDirt</constructEffect>
+    <repairEffect>ConstructDirt</repairEffect>
+    <designationHotKey>Misc1</designationHotKey>
+  </ThingDef>
+
+</ThingDefs>

@@ -1,0 +1,492 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CorePanda</name>
+    </assembly>
+    <members>
+        <member name="T:CorePanda.Building_DryingMudbricks">
+            <summary>
+            Dries mudbricks in the sunlight
+            </summary>
+        </member>
+        <member name="M:CorePanda.Building_DryingMudbricks.SpawnSetup">
+            <summary></summary>
+        </member>
+        <member name="P:CorePanda.Building_DryingMudbricks.DrawColor">
+            <summary>
+            Change the color depending on drying progress
+            </summary>
+        </member>
+        <member name="M:CorePanda.Building_DryingMudbricks.TickRare">
+            <summary></summary>
+        </member>
+        <member name="M:CorePanda.Building_DryingMudbricks.ExposeData">
+            <summary></summary>
+        </member>
+        <member name="M:CorePanda.Building_DryingMudbricks.GetInspectString">
+            <summary></summary>
+        </member>
+        <member name="T:CorePanda.Building_ResourcePitSpawner">
+            <summary>
+            Allows colonists to dig up dirt, clay, sand, or gravel
+            </summary>
+        </member>
+        <member name="M:CorePanda.Building_ResourcePitSpawner.SpawnSetup">
+            <summary></summary>
+        </member>
+        <member name="T:CorePanda.Building_Vent">
+            <summary>
+            Adds comps to the vent
+            </summary>
+        </member>
+        <member name="M:CorePanda.Building_Vent.SpawnSetup">
+            <summary></summary>
+        </member>
+        <member name="M:CorePanda.Building_Vent.GetGizmos">
+            <summary> Add a button for opening and closing the vent </summary>
+        </member>
+        <member name="M:CorePanda.Building_Vent.InitializeComps">
+            <summary> Add all the comps listed in xml </summary>
+        </member>
+        <member name="M:CorePanda.Building_Vent.TickRare">
+            <summary> Equalize temperature and tick each comp </summary>
+        </member>
+        <member name="M:CorePanda.Building_Vent.ExposeData">
+            <summary> Handle loading data </summary>
+        </member>
+        <member name="T:CorePanda.Building_WindowGlower">
+            <summary>
+            Simulates light coming in through a window
+            </summary>
+        </member>
+        <member name="M:CorePanda.Building_WindowGlower.SpawnSetup">
+            <summary></summary>
+        </member>
+        <member name="M:CorePanda.Building_WindowGlower.TickRare">
+            <summary>
+            Get the sunlight, find an adjacent window, then update the glow
+            </summary>
+        </member>
+        <member name="M:CorePanda.Building_WindowGlower.GetAdjacentWindow">
+            <summary>
+            Find an adjacent window
+            </summary>
+        </member>
+        <member name="M:CorePanda.Building_WindowGlower.UpdateGlow">
+            <summary></summary>
+        </member>
+        <member name="T:CorePanda.Building_WindowSpawner">
+            <summary>
+            Builds a window and a glower, then destroys itself
+            </summary>
+        </member>
+        <member name="M:CorePanda.Building_WindowSpawner.SpawnSetup">
+            <summary></summary>
+        </member>
+        <member name="T:CorePanda.CompProperties_Hanger">
+            <summary>
+            Supplies CompHanger with hanging information
+            </summary>
+        </member>
+        <member name="F:CorePanda.CompProperties_Hanger.HangingType">
+            <summary>
+            What is this object hanging on?
+            </summary>
+        </member>
+        <member name="F:CorePanda.CompProperties_Hanger.WallHeight">
+            <summary>
+            If this is on a wall, how high is it?
+            </summary>
+        </member>
+        <member name="M:CorePanda.CompProperties_Hanger.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:CorePanda.CompProperties_Upgradeable">
+            <summary>
+            Handles stats for upgrading
+            </summary>
+        </member>
+        <member name="F:CorePanda.CompProperties_Upgradeable.ResearchString">
+            <summary>
+            The <see cref="T:Verse.ResearchProjectDef"/> DefName, if any, to unlock the upgrade
+            </summary>
+        </member>
+        <member name="F:CorePanda.CompProperties_Upgradeable.UpgradeTex">
+            <summary>
+            The <see cref="T:Verse.ContentFinder`1"/> string location of the button texture (Things/UI/Designators/ExampleTexture)
+            </summary>
+        </member>
+        <member name="F:CorePanda.CompProperties_Upgradeable.BlueprintThingDef">
+            <summary>
+            The <see cref="T:Verse.ThingDef"/> DefName for the upgraded ThingDef (ElectricSmithy)
+            </summary>
+        </member>
+        <member name="F:CorePanda.CompProperties_Upgradeable.UpgradeDescString">
+            <summary>
+            The complete string for the upgrade button's description
+            </summary>
+        </member>
+        <member name="F:CorePanda.CompProperties_Upgradeable.UpgradeLabelString">
+            <summary>
+            The complete string for the upgrade button's label
+            </summary>
+        </member>
+        <member name="M:CorePanda.CompProperties_Upgradeable.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:CorePanda.CompProperties_VariableSolarPower">
+            <summary>
+            Allows XML-editing of solar power output
+            </summary>
+        </member>
+        <member name="F:CorePanda.CompProperties_VariableSolarPower.FullSunPower">
+            Public to allow XML editing
+        </member>
+        <member name="F:CorePanda.CompProperties_VariableSolarPower.NightPower">
+            Public to allow XML editing
+        </member>
+        <member name="M:CorePanda.CompProperties_VariableSolarPower.#ctor">
+            <summary> Connect this to CompProperties_VariableSolarPower </summary>
+        </member>
+        <member name="T:CorePanda.CompUpgradeable">
+            <summary>
+            Allows buildings to be upgraded
+            </summary>
+        </member>
+        <member name="P:CorePanda.CompUpgradeable.Props">
+            <summary></summary>
+        </member>
+        <member name="M:CorePanda.CompUpgradeable.CompGetGizmosExtra">
+            <summary>
+            Add a button for upgrading this building
+            </summary>
+        </member>
+        <member name="M:CorePanda.CompUpgradeable.HandlePopup">
+            <summary>
+            Creates a popup dialog, letting the player confirm the choice to upgrade
+            </summary>
+        </member>
+        <member name="M:CorePanda.CompUpgradeable.DestroyAndSetBlueprint(System.String)">
+            <summary>
+            Destroys the current building, then sets the blueprint for the upgrade
+            </summary>
+        </member>
+        <member name="T:CorePanda.CompSunlight">
+            <summary>
+            Handles sunlight based on weather
+            </summary>
+        </member>
+        <member name="P:CorePanda.CompSunlight.WeatherLight">
+            <summary>
+            Used for determining if the weather is affecting the current sunlight
+            </summary>
+        </member>
+        <member name="P:CorePanda.CompSunlight.SimpleFactoredSunlight">
+            <summary>
+            Returns 0.0f to 1.0f based on time and weather
+            <para>Requires GetSunlight() to have already been called</para>
+            </summary>
+        </member>
+        <member name="P:CorePanda.CompSunlight.FactoredSunlight">
+            <summary>
+            Gets the current sunlight, then returns 0.0f to 1.0f based on time and weather
+            </summary>
+        </member>
+        <member name="M:CorePanda.CompSunlight.GetSunlight">
+            <summary>
+            Updates the sunlight based on weather
+            </summary>
+        </member>
+        <member name="T:CorePanda.CompColdPusher">
+            <summary>
+            Pushes coldness
+            </summary>
+        </member>
+        <member name="P:CorePanda.CompColdPusher.ColdPushInterval">
+            <summary>
+            How often(ticks) this should push coldness
+            </summary>
+        </member>
+        <member name="P:CorePanda.CompColdPusher.Props">
+            <summary></summary>
+        </member>
+        <member name="P:CorePanda.CompColdPusher.ShouldPushColdNow">
+            <summary>
+            Used with CompProperties_ColdPusher.ConstantPush to constantly push coldness
+            </summary>
+        </member>
+        <member name="M:CorePanda.CompColdPusher.Push(Verse.IntVec3,System.Single)">
+            <summary>
+            This is specifically for Building_SolarChimney
+            </summary>
+            <param name="pos">Where to push coldness</param>
+            <param name="strength">How much coldness to push</param>
+        </member>
+        <member name="M:CorePanda.CompColdPusher.SimplePush(System.Single)">
+            <summary>
+            Use data defined in the XML to push coldness
+            </summary>
+            <param name="tickDivisor">How much to divide by</param>
+        </member>
+        <member name="M:CorePanda.CompColdPusher.CompTick">
+            <summary>
+            Used to constantly push coldness every 60 ticks, if ShouldPushColdNow == true
+            </summary>
+        </member>
+        <member name="T:CorePanda.CompProperties_ColdPusher">
+            <summary>
+            Pushes coldness instead of heat
+            </summary>
+        </member>
+        <member name="F:CorePanda.CompProperties_ColdPusher.ColdPerSecond">
+            <summary>
+            Strength(not temperature) of coldness to output
+            </summary>
+        </member>
+        <member name="F:CorePanda.CompProperties_ColdPusher.ColdPushMinTemperature">
+            <summary>
+            The minimum temperature to push coldness, set to default
+            </summary>
+        </member>
+        <member name="F:CorePanda.CompProperties_ColdPusher.ConstantPush">
+            <summary>
+            Does this constantly push coldness? Also used to toggle on/off state
+            </summary>
+        </member>
+        <member name="M:CorePanda.CompProperties_ColdPusher.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:CorePanda.CompRainTank">
+            <summary>
+            Stores water based on the weather and biome
+            </summary>
+        </member>
+        <member name="P:CorePanda.CompRainTank.FillRatePerTick">
+            <summary>
+            Getter for production statistics
+            </summary>
+        </member>
+        <member name="P:CorePanda.CompRainTank.FillRatePerHour">
+            <summary>
+            Getter for production statistics
+            </summary>
+        </member>
+        <member name="P:CorePanda.CompRainTank.WaterLevelMax">
+            <summary>
+            Maximum amount of water to be stored, needs to be set by parent
+            </summary>
+        </member>
+        <member name="P:CorePanda.CompRainTank.WaterLevel">
+            <summary>
+            Current water level
+            </summary>
+        </member>
+        <member name="P:CorePanda.CompRainTank.Precipitation">
+            <summary>
+            How much rain/snow is falling
+            </summary>
+        </member>
+        <member name="M:CorePanda.CompRainTank.PostExposeData">
+            <summary>
+            Handles loading data
+            </summary>
+        </member>
+        <member name="M:CorePanda.CompRainTank.AddWater(System.Single)">
+            <summary>
+            Add water to the tank based on weather and biome
+            </summary>
+            <param name="divisor">125f is a good starting divisor for a 1-cell tank that accepts water every tick</param>
+        </member>
+        <member name="M:CorePanda.CompRainTank.UseWater(System.Single)">
+            <summary>
+            Consume water from the tank
+            <para>Make sure there is enough water stored prior to calling this</para>
+            </summary>
+        </member>
+        <member name="T:CorePanda.CompHanger">
+            <summary>
+            Minifies a minifiable object if the thing it's hanging on is missing
+            </summary>
+        </member>
+        <member name="P:CorePanda.CompHanger.Props">
+            <summary></summary>
+        </member>
+        <member name="M:CorePanda.CompHanger.CompTickRare">
+            <summary> Checks for a disconnection, then minifies an object if needed</summary>
+        </member>
+        <member name="M:CorePanda.CompHanger.Minify">
+            <summary> Minifies the package</summary>
+        </member>
+        <member name="T:CorePanda.CompVariablePowerPlantSolar">
+            <summary>
+            Allows changing power variables in XML
+            <para>Also uses CompSunlight for added realism</para>
+            </summary>
+        </member>
+        <member name="P:CorePanda.CompVariablePowerPlantSolar.Props">
+            <summary> Accessor for the CompProperties </summary>
+        </member>
+        <member name="M:CorePanda.CompVariablePowerPlantSolar.PostSpawnSetup">
+            <summary> Setup the sunlight component, then get sunlight </summary>
+        </member>
+        <member name="M:CorePanda.CompVariablePowerPlantSolar.CompTick">
+            <summary> Every TickRare, update the sunlight - this doesn't need to be done every tick </summary>
+        </member>
+        <member name="P:CorePanda.CompVariablePowerPlantSolar.DesiredPowerOutput">
+            <summary> Calculate how much power is being outputted </summary>
+        </member>
+        <member name="M:CorePanda.CompVariablePowerPlantSolar.PostDraw">
+            <summary> Draw the power bar </summary>
+        </member>
+        <member name="M:CorePanda.CompVariablePowerPlantSolar.CompInspectStringExtra">
+            <summary> Handle inspector data </summary> 
+        </member>
+        <member name="T:CorePanda.CompWallAddon">
+            <summary>
+            Allows objects to die when a wall is destroyed
+            </summary>
+        </member>
+        <member name="M:CorePanda.CompWallAddon.CompTickRare">
+            <summary></summary>
+        </member>
+        <member name="T:CorePanda.HangingType">
+            <summary>The thing to hang on to</summary>
+        </member>
+        <member name="F:CorePanda.HangingType.Wall">
+            <summary> Hang onto a wall </summary>
+        </member>
+        <member name="F:CorePanda.HangingType.Ceiling">
+            <summary> Hang onto the ceiling </summary>
+        </member>
+        <member name="F:CorePanda.HangingType.None">
+            <summary> Data is missing </summary>
+        </member>
+        <member name="T:CorePanda.WallHeight">
+            <summary> The height this object is on a wall, used for conflicts </summary>
+        </member>
+        <member name="F:CorePanda.WallHeight.None">
+            <summary> Data is missing </summary>
+        </member>
+        <member name="F:CorePanda.WallHeight.Low">
+            <summary> Interferes with vents </summary>
+        </member>
+        <member name="F:CorePanda.WallHeight.High">
+            <summary> Interferes with windows </summary>
+        </member>
+        <member name="T:CorePanda.ItemSpawner">
+            <summary>
+            Spawns items
+            </summary>
+        </member>
+        <member name="M:CorePanda.ItemSpawner.SpawnRandomQuantity(Verse.ThingDef,System.Int32,System.Int32)">
+            <summary>
+            Spawns a random quantity of a ThingDef
+            <para>Don't forget to destroy the spawner!</para>
+            </summary>
+            <param name="TDef">ThingDef to spawn. ThingDef.Named("DefName") can be used</param>
+            <param name="MinToSpawn">The minimum amount to spawn</param>
+            <param name="MaxToSpawn">The maximum amount to spawn. Inclusive</param>
+        </member>
+        <member name="M:CorePanda.ItemSpawner.SpawnRandomQuantity(Verse.Thing,System.Int32,System.Int32)">
+            <summary>
+            Spawns a random quantity of a Thing
+            <para>Don't forget to destroy the spawner!</para>
+            </summary>
+            <param name="T">Thing to spawn.</param>
+            <param name="MinToSpawn">The minimum amount to spawn</param>
+            <param name="MaxToSpawn">The maximum amount to spawn. Inclusive</param>
+        </member>
+        <member name="T:CorePanda.Item_QuartzSpawner">
+            <summary>
+            Spawns a random quantity of quartz
+            </summary>
+        </member>
+        <member name="M:CorePanda.Item_QuartzSpawner.SpawnSetup">
+            <summary></summary>
+        </member>
+        <member name="M:CorePanda.JobDriver_LookOutWindow.GetAdjacentWindow">
+            <summary>
+            Find an adjacent window
+            </summary>
+        </member>
+        <member name="T:CorePanda.JoyGiver_LookOutWindow">
+            <summary>
+            Finds the inside of a nearby window and issues a job to look out it
+            </summary>
+        </member>
+        <member name="T:CorePanda.PlaceWorker_AgainstWall">
+            <summary>
+            Only allows an object to be placed against a wall
+            <para>(Checks the cell behind this object)</para>
+            </summary>
+        </member>
+        <member name="M:CorePanda.PlaceWorker_AgainstWall.AllowsPlacing(Verse.BuildableDef,Verse.IntVec3,Verse.Rot4)">
+            <summary>
+            Whether this can be placed or not
+            </summary>
+            <param name="checkingDef">Thing to build</param>
+            <param name="loc">Location to build</param>
+            <param name="rot">Rotation of Thing</param>
+        </member>
+        <member name="T:CorePanda.PlaceWorker_DiggableResources">
+            <summary>
+            Only allows an object to be placed on diggable resources (Dirt, Clay, Sand, or Gravel)
+            </summary>
+        </member>
+        <member name="M:CorePanda.PlaceWorker_DiggableResources.AllowsPlacing(Verse.BuildableDef,Verse.IntVec3,Verse.Rot4)">
+            <summary>
+            Whether this can be placed or not
+            </summary>
+            <param name="checkingDef">Thing to build</param>
+            <param name="loc">Location to build</param>
+            <param name="rot">Rotation of Thing</param>
+        </member>
+        <member name="T:CorePanda.PlaceWorker_NotUnderThickRoof">
+            <summary>
+            Prevents an object from being placed under a thick roof
+            <para>(Checks the cell behind this object)</para>
+            </summary>
+        </member>
+        <member name="M:CorePanda.PlaceWorker_NotUnderThickRoof.AllowsPlacing(Verse.BuildableDef,Verse.IntVec3,Verse.Rot4)">
+            <summary>
+            Whether this can be placed or not
+            </summary>
+            <param name="checkingDef">Thing to build</param>
+            <param name="loc">Location to build</param>
+            <param name="rot">Rotation of Thing</param>
+        </member>
+        <member name="T:CorePanda.PlaceWorker_Roofed">
+            <summary>
+            Restrict buildings to being placed under a roof
+            </summary>
+        </member>
+        <member name="M:CorePanda.PlaceWorker_Roofed.AllowsPlacing(Verse.BuildableDef,Verse.IntVec3,Verse.Rot4)">
+            <summary></summary>
+        </member>
+        <member name="T:CorePanda.PlaceWorker_WindowInWall">
+            <summary>
+            Restricts the window to only being placed on a wall tile
+            </summary>
+        </member>
+        <member name="M:CorePanda.PlaceWorker_WindowInWall.AllowsPlacing(Verse.BuildableDef,Verse.IntVec3,Verse.Rot4)">
+            <summary></summary>
+        </member>
+        <member name="T:CorePanda.WeatherLight">
+            <summary>
+            Shows how much the weather is affecting perceived sunlight levels
+            </summary>
+        </member>
+        <member name="F:CorePanda.WeatherLight.Bright">
+            <summary> Weather is not affecting the sunlight at all </summary>
+        </member>
+        <member name="F:CorePanda.WeatherLight.Darkened">
+            <summary> Weather is blocking a little bit of sunlight </summary>
+        </member>
+        <member name="F:CorePanda.WeatherLight.Dark">
+            <summary> Weather is blocking a lot of sunlight </summary>
+        </member>
+        <member name="F:CorePanda.WeatherLight.None">
+            <summary> Data has not been processed yet </summary>
+        </member>
+    </members>
+</doc>

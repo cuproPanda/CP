@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<ThoughtDef>
+		<defName>CP_BottledWater</defName>
+		<durationDays>0.5</durationDays>
+		<stackLimit>1</stackLimit>
+		<stages>
+			<li>
+				<label>refreshed</label>
+				<description>I had some fresh water. It may not be much, but it's nice to have.</description>
+				<baseMoodEffect>1</baseMoodEffect>
+			</li> 
+		</stages>
+	</ThoughtDef>
+
+	<ThoughtDef>
+		<defName>CP_LookedOutWindow</defName>
+		<durationDays>0.5</durationDays>
+		<stackLimit>1</stackLimit>
+		<stages>
+			<li>
+				<label>looked out a window</label>
+				<description>I was able to see the outdoors, if only through a window.</description>
+				<baseMoodEffect>4</baseMoodEffect>
+			</li> 
+		</stages>
+	</ThoughtDef>
+
+</Defs>

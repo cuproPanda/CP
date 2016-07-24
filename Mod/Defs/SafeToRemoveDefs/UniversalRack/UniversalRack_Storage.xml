@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Buildings>
+	<ThingDef ParentName="FurnitureBase">
+		<defName>CP_UniversalRack</defName>
+		<label>storage rack</label>
+		<description>Provides a simple storage solution.</description>
+		<thingClass>Building_Storage</thingClass>
+		<graphicData>
+			<texPath>Cupro/Object/Furniture/UniversalRack/UniversalRack</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1.75,1.75)</drawSize>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.4</fillPercent>
+		<castEdgeShadows>true</castEdgeShadows>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>15</costStuffCount>
+		<statBases>
+			<Beauty>1</Beauty>
+			<MaxHitPoints>75</MaxHitPoints>
+			<WorkToMake>500</WorkToMake>
+		</statBases>
+		<size>(1,1)</size>
+		<building>
+			<preventDeterioration>true</preventDeterioration>
+			<fixedStorageSettings>
+				<filter>
+					<categories>
+						<li>Resources</li>
+						<li>Items</li>
+						<li>Weapons</li>
+						<li>Apparel</li>
+						<li>BodyParts</li>
+					</categories>
+				</filter>
+			</fixedStorageSettings>
+			<defaultStorageSettings>
+				<priority>Important</priority>
+				<filter>
+					<exceptedCategories>
+						<li>Resources</li>
+						<li>Items</li>
+						<li>Weapons</li>
+						<li>Apparel</li>
+						<li>BodyParts</li>
+					</exceptedCategories>
+				</filter>
+			</defaultStorageSettings>
+		</building>
+		<inspectorTabs>
+			<li>ITab_Storage</li>
+		</inspectorTabs>
+		<staticSunShadowHeight>0.5</staticSunShadowHeight>
+		<surfaceType>Item</surfaceType>
+		<tradeTags>
+			<li>Exotic</li>
+		</tradeTags>
+		<tradeability>Sellable</tradeability>
+	</ThingDef>
+</Buildings>

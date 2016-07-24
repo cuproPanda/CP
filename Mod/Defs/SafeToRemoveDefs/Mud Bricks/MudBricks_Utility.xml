@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Buildings>
+	<ThingDef ParentName="BuildingBase">
+		<defName>CP_DryingMudbricks</defName>
+		<thingClass>CorePanda.Building_DryingMudbricks</thingClass>
+		<label>drying mudbricks</label>
+		<Description>Mudbricks laid out to dry in the sun.</Description>
+		<graphicData>
+			<texPath>Cupro/Object/Utility/DryingMudbricks</texPath>
+			<color>(70,50,30)</color>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<blockLight>false</blockLight>
+		<placingDraggableDimensions>2</placingDraggableDimensions>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>false</rotatable>
+		<statBases>
+			<WorkToMake>50</WorkToMake>
+		</statBases>
+		<CostList>
+			<CP_WetMudbrick>5</CP_WetMudbrick>
+		</CostList>
+		<useHitPoints>False</useHitPoints>
+		<Size>(1,1)</Size>
+		<DesignationCategory>Misc</DesignationCategory>
+		<Passability>PassThroughOnly</Passability>
+		<tickerType>Rare</tickerType>
+		<comps>
+			<li>
+				<compClass>CorePanda.CompSunlight</compClass>
+			</li>
+			<li>
+				<compClass>CompColorable</compClass>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_NotUnderRoof</li>
+		</placeWorkers>
+	</ThingDef>
+</Buildings>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	
+	<!-- Window -->
+	
+	<CP_WindowImpassable>Window is blocked on one or more sides.</CP_WindowImpassable>
+	<CP_WindowDoubleOutside>One side of the window must be inside.</CP_WindowDoubleOutside>
+	<CP_WindowDoubleInside>One side of the window must be outside.</CP_WindowDoubleInside>
+	<CP_WatchingToxicFallout>Watching the toxic dust clouds outside.</CP_WatchingToxicFallout>
+	<CP_WatchingVolcanicWinter>Watching the ash fall.</CP_WatchingVolcanicWinter>
+	<CP_WatchingRain>Watching the rain outside.</CP_WatchingRain>
+	<CP_WatchingSnow>Watching the snow fall.</CP_WatchingSnow>
+	<CP_WindowBlocksPlacement>{0} cannot be placed on a window.</CP_WindowBlocksPlacement>
+	
+	<!-- Resource Pit -->
+	
+	<CP_MustPlaceOnDiggableResources>This needs to be built on diggable resources (dirt, clay, sand, gravel).</CP_MustPlaceOnDiggableResources>
+  
+  
+	<!-- Upgradeable Component -->
+  
+	<CP_UpgradeConfirmationDialog>Are you sure you want to upgrade the {0} to a {1}? This action will remove the {0} and cannot be undone. 
+
+If you do not have the materials to build a {1}, choose "{3}"
+\n
+Materials needed to upgrade: \n{2}
+</CP_UpgradeConfirmationDialog>
+
+
+	<CP_UpgradeChoiceAccept>Upgrade this building</CP_UpgradeChoiceAccept>
+	<CP_UpgradeChoiceCancel>Cancel</CP_UpgradeChoiceCancel>
+  
+  
+	<!-- RainTank Component -->
+  
+	<CP_WaterError>Drawing water we don't have from </CP_WaterError>
+  
+  
+	<!-- Drying Mudbricks -->
+  
+	<CP_Progress>Progress</CP_Progress>
+	
+	
+	<!-- Chandelier -->
+	
+	<CP_ObjectTooTall>{0} is too tall to place a {1} here</CP_ObjectTooTall>
+	<CP_NeedsRoof>{0} needs to be placed under a roof</CP_NeedsRoof>
+	
+	
+	<!-- Placement Restrictors -->
+	
+	<CP_MustBePlacedOnWall>{0} must be placed on a wall.</CP_MustBePlacedOnWall>
+	
+	<!-- Vent -->
+	
+	<CP_ToggleVent>Open/Close the vent</CP_ToggleVent>
+
+</LanguageData>

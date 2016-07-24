@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RecipeDefs>
+
+	<RecipeDef>
+		<defName>CP_MixAsphalt</defName>
+		<label>mix asphalt</label>
+		<description>Heat and mix rubber, sand, and gravel to make rubberized asphalt.</description>
+		<jobString>Mixing asphalt.</jobString>
+		<workAmount>800</workAmount>
+		<workSpeedStat>CookSpeed</workSpeedStat>
+		<effectWorking>Smelt</effectWorking>
+		<soundWorking>Recipe_Smelt</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CP_Rubber</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CP_Sand</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CP_Gravel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<products>
+			<CP_RubberizedAsphalt>10</CP_RubberizedAsphalt>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>CP_Rubber</li>
+				<li>CP_Sand</li>
+				<li>CP_Gravel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<thingDefs>
+				<li>CP_Rubber</li>
+				<li>CP_Sand</li>
+				<li>CP_Gravel</li>
+			</thingDefs>
+		</defaultIngredientFilter>
+		<recipeUsers>
+			<li>CP_Furnace</li>
+		</recipeUsers>
+		<workSkill>Cooking</workSkill>
+	</RecipeDef>
+
+
+</RecipeDefs>

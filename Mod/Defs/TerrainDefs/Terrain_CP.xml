@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TerrainDefs>
+
+	<TerrainDef Name="FloorBase" Abstract="True">
+		<layerable>true</layerable>
+		<affordances>
+			<li>Light</li>
+			<li>Heavy</li>
+			<li>SmoothHard</li>
+		</affordances>
+		<statBases>
+			<WorkToMake>135</WorkToMake>
+		</statBases>
+		<designationCategory>Floors</designationCategory>
+		<Fertility>0</Fertility>
+		<constructEffect>ConstructDirt</constructEffect>
+		<AcceptTerrainSourceFilth>True</AcceptTerrainSourceFilth>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+	</TerrainDef>
+
+
+	<TerrainDef ParentName="FloorBase">
+		<DefName>CP_CopperTile</DefName>
+		<label>copper tile</label>
+		<RenderPrecedence>244</RenderPrecedence>
+		<Description>Copper tiles. Naturally antimicrobial tiles useful in hospitals to help prevent patients from getting various infections.</Description>
+		<texturePath>Terrain/Surfaces/GenericFloorTile</texturePath>
+		<color>(100,80,20)</color>
+		<statBases>
+			<Cleanliness>0.3</Cleanliness>
+			<WorkToMake>500</WorkToMake>
+		</statBases>
+		<EdgeType>Hard</EdgeType>
+		<CostList>
+			<CP_Copper>5</CP_Copper>
+		</CostList>
+		<constructEffect>ConstructMetal</constructEffect>
+	</TerrainDef>
+
+</TerrainDefs>

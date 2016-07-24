@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Buildings>
+	<ThingDef ParentName="FurnitureBase"> 
+		<defName>CP_StumpChair</defName>
+		<label>stump chair</label>
+		<description>A stump that has been flattened to sit on.</description>
+		<graphicData>
+			<texPath>Cupro/Object/Furniture/LogChair</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shadowData>
+				<volume>(0.3, 0.6, 0.3)</volume>
+			</shadowData>
+		</graphicData>
+		<blockLight>false</blockLight>
+		<altitudeLayer>Building</altitudeLayer>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+			<WorkToMake>250</WorkToMake>
+			<Flammability>1.0</Flammability>
+			<Beauty>1</Beauty>
+			<Comfort>0.35</Comfort>
+		</statBases>
+		<CostList>
+			<WoodLog>5</WoodLog>
+		</CostList>
+		<socialPropernessMatters>false</socialPropernessMatters>
+		<rotatable>false</rotatable>
+		<pathCost>30</pathCost>
+		<fillPercent>0.30</fillPercent>
+		<constructEffect>ConstructDirt</constructEffect>
+		<building>
+			<isSittable>true</isSittable>
+		</building>
+	</ThingDef>
+</Buildings>
