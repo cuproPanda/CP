@@ -22,8 +22,7 @@ namespace CorePanda {
       for (int i = 0; i < occupiedCellsTemp.Count; i++) {
         IntVec3 c = occupiedCellsTemp[i];
         if (c.GetEdifice() != null) {
-          if (c.GetEdifice().def.passability == Traversability.Impassable || c.GetEdifice().def.altitudeLayer >= AltitudeLayer.DoorMoveable ||
-             (c.GetEdifice().def == ThingDefOf.Wall || c.GetEdifice().def.building.isNaturalRock)) {
+          if (c.GetEdifice().def.blockWind == true || c.GetEdifice().def.holdsRoof == true) {
             return new AcceptanceReport("CP_ObjectTooTall".Translate(new object[] { c.GetEdifice().LabelCap, checkingDef.LabelCap }));
           }
         }
