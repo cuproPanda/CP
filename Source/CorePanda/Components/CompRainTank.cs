@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace CorePanda {
@@ -6,6 +7,11 @@ namespace CorePanda {
   /// Stores water based on the weather and biome
   /// </summary>
   public class CompRainTank : ThingComp {
+
+    private float waterLevelInt;
+    private float ConsumptionRatePerTick = 1f;
+    private BiomeDef biomeDef = Find.Map.Biome;
+    private float biomeMultiplierInt = 0f;
 
     /// <summary>
     /// Getter for production statistics
@@ -33,7 +39,6 @@ namespace CorePanda {
         return waterLevelInt;
       }
     }
-    private float waterLevelInt;
 
     /// <summary>
     /// How much rain/snow is falling
@@ -45,8 +50,6 @@ namespace CorePanda {
     }
 
     // The map biome, used for fine-tuning precipitation based on dryness or freezing
-    private BiomeDef biomeDef = Find.Map.Biome;
-    private float biomeMultiplierInt = 0f;
     private float biomeMultiplier {
       get {
         if (biomeMultiplierInt == 0f) {
@@ -66,7 +69,7 @@ namespace CorePanda {
             biomeMultiplierInt = 1f;
           }
         }
-        return (float)biomeMultiplierInt;
+        return biomeMultiplierInt;
       }
     }
 
@@ -87,10 +90,7 @@ namespace CorePanda {
     /// <param name="divisor">125f is a good starting divisor for a 1-cell tank that accepts water every tick</param>
     public virtual void AddWater(float divisor = 125f) {
       // Calculate the water level
-      waterLevelInt += (Precipitation * biomeMultiplier) / divisor;
-      if (waterLevelInt > WaterLevelMax) {
-        waterLevelInt = WaterLevelMax;
-      }
+      waterLevelInt = Mathf.Clamp(waterLevelInt + ((Precipitation * biomeMultiplier) / divisor), 0f, WaterLevelMax);
     }
 
 
@@ -101,9 +101,17 @@ namespace CorePanda {
     public virtual void UseWater(float amount) {
       waterLevelInt -= amount;
       if (waterLevelInt < 0f) {
-        Log.Error("CP_WaterError".Translate() + this.parent);
+        Log.Error("CP_WaterError".Translate() + parent);
         waterLevelInt = 0f;
       }
+    }
+
+
+    /// <summary>
+    /// Consume water from the tank per tick
+    /// </summary>
+    public virtual void Notify_UsedThisTick() {
+      UseWater(ConsumptionRatePerTick);
     }
   }
 }

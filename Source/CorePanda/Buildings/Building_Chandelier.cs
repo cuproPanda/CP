@@ -12,7 +12,7 @@ namespace CorePanda {
 
       if (Spawned && bowl == null) {
         // Determine what glass bowl to spawn 
-        // Allows the chandelier to be MadeFromStuff and have transparency
+        // Allows the chandelier to be MadeFromStuff and have transparent MadeFromStuff for the bowl
         if (def.defName == "CP_Chandelier_Glass") {
           bowl = ThingMaker.MakeThing(ThingDef.Named("CP_ChandelierPart_Bowl"), ThingDef.Named("CP_Glass")) as Building_ChandelierBowl;
         }
@@ -21,8 +21,8 @@ namespace CorePanda {
         }
 
         if (bowl != null) {
-          GenSpawn.Spawn(bowl, Position, Rotation);
           bowl.SetFactionDirect(Faction.OfPlayer);
+          GenSpawn.Spawn(bowl, Position, Rotation);
         }
       }
     }

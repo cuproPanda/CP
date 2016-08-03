@@ -13,13 +13,15 @@ namespace CorePanda {
     private CompGlower glowComp;
     private CompSunlight sunlightComp;
 
-    private ColorInt brightness;                // The color/brightness of the light. Used for more realistic light
-    private float radius;                       // The current radius of light, used for twilight
-    private float beauty;                       // The beauty value to set, based off incoming light  
+    // The color/brightness of the light. Used for more realistic light
+    private ColorInt brightness;
+    // The current radius of light, used for twilight
+    private float radius;
+    // The beauty value to set, based off incoming light 
+    private float beauty;
 
-
-    // Get adjacent cells
     private List<IntVec3> cachedAdjCellsCardinal;
+
     private List<IntVec3> AdjCellsCardinalInBounds {
       get {
         if (cachedAdjCellsCardinal == null) {
@@ -39,7 +41,6 @@ namespace CorePanda {
       sunlightComp = GetComp<CompSunlight>();
       UpdateGlow();
     }
-
 
 
     /// <summary>
@@ -75,7 +76,6 @@ namespace CorePanda {
 
     /// <summary></summary>
     private void UpdateGlow() {
-
       // Set the stats based on the current sunlight
       if (sunlightComp.FactoredSunlight >= 0.9f) {
         brightness = new ColorInt(175, 175, 165, 0);
@@ -83,27 +83,23 @@ namespace CorePanda {
         radius = 8f;
         beauty = 25f;
       }
-
       else if (sunlightComp.FactoredSunlight >= 0.72f && sunlightComp.FactoredSunlight < 0.90f) {
         brightness = new ColorInt(150, 150, 140, 0);
         radius = 8f;
         beauty = 20f;
       }
-
       else if (sunlightComp.FactoredSunlight >= 0.54f && sunlightComp.FactoredSunlight < 0.72f) {
         brightness = new ColorInt(125, 125, 120, 0);
         glowComp.Props.overlightRadius = 0f;
         radius = 8f;
         beauty = 15f;
       }
-
       else if (sunlightComp.FactoredSunlight >= 0.36f && sunlightComp.FactoredSunlight < 0.54f) {
         brightness = new ColorInt(105, 105, 100, 0);
         glowComp.Props.overlightRadius = 0f;
         radius = 6f;
         beauty = 10f;
       }
-
       else if (sunlightComp.FactoredSunlight >= 0.18f && sunlightComp.FactoredSunlight < 0.36f) {
         brightness = new ColorInt(80, 80, 95, 0);
         glowComp.Props.overlightRadius = 0f;
@@ -111,14 +107,12 @@ namespace CorePanda {
         beauty = 5f;
         ;
       }
-
       else if (sunlightComp.FactoredSunlight >= 0.05f && sunlightComp.FactoredSunlight < 0.18f) {
         brightness = new ColorInt(60, 53, 75, 0);
         glowComp.Props.overlightRadius = 0f;
         radius = 3f;
         beauty = 1f;
       }
-
       else {
         brightness = new ColorInt(0, 0, 0, 0);
         glowComp.Props.overlightRadius = 0f;
@@ -127,7 +121,6 @@ namespace CorePanda {
       }
 
       // Update the CompGlower
-      Find.MapDrawer.MapMeshDirty(Position, MapMeshFlag.Buildings);
       Find.GlowGrid.DeRegisterGlower(glowComp);
       glowComp.Props.glowRadius = radius;
       glowComp.Props.glowColor = brightness;
