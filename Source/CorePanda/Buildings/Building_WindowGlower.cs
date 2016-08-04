@@ -49,7 +49,12 @@ namespace CorePanda {
     public override void TickRare() {
       base.TickRare();
       GetAdjacentWindow();
-      UpdateGlow();
+      
+      //// TODO List:
+      // Calculate outside roof -- 4 TickRares
+      // Scan for outside beauty based on trees, corpses, walls, etc -- 20 TickRares
+      // JoyGiver, JoyGainRate based on beauty
+      // TickRareTracker++
     }
 
 
@@ -75,56 +80,21 @@ namespace CorePanda {
 
 
     /// <summary></summary>
-    private void UpdateGlow() {
-      // Set the stats based on the current sunlight
-      if (sunlightComp.FactoredSunlight >= 0.9f) {
-        brightness = new ColorInt(175, 175, 165, 0);
-        glowComp.Props.overlightRadius = 2.2f;
-        radius = 8f;
-        beauty = 25f;
-      }
-      else if (sunlightComp.FactoredSunlight >= 0.72f && sunlightComp.FactoredSunlight < 0.90f) {
-        brightness = new ColorInt(150, 150, 140, 0);
-        radius = 8f;
-        beauty = 20f;
-      }
-      else if (sunlightComp.FactoredSunlight >= 0.54f && sunlightComp.FactoredSunlight < 0.72f) {
-        brightness = new ColorInt(125, 125, 120, 0);
-        glowComp.Props.overlightRadius = 0f;
-        radius = 8f;
-        beauty = 15f;
-      }
-      else if (sunlightComp.FactoredSunlight >= 0.36f && sunlightComp.FactoredSunlight < 0.54f) {
-        brightness = new ColorInt(105, 105, 100, 0);
-        glowComp.Props.overlightRadius = 0f;
-        radius = 6f;
-        beauty = 10f;
-      }
-      else if (sunlightComp.FactoredSunlight >= 0.18f && sunlightComp.FactoredSunlight < 0.36f) {
-        brightness = new ColorInt(80, 80, 95, 0);
-        glowComp.Props.overlightRadius = 0f;
-        radius = 4f;
-        beauty = 5f;
-        ;
-      }
-      else if (sunlightComp.FactoredSunlight >= 0.05f && sunlightComp.FactoredSunlight < 0.18f) {
-        brightness = new ColorInt(60, 53, 75, 0);
-        glowComp.Props.overlightRadius = 0f;
-        radius = 3f;
-        beauty = 1f;
-      }
-      else {
-        brightness = new ColorInt(0, 0, 0, 0);
-        glowComp.Props.overlightRadius = 0f;
-        radius = 1f;
-        beauty = 0f;
-      }
-
+    public void UpdateGlow(WindowGlow glow) {
       // Update the CompGlower
       Find.GlowGrid.DeRegisterGlower(glowComp);
-      glowComp.Props.glowRadius = radius;
-      glowComp.Props.glowColor = brightness;
-      def.SetStatBaseValue(StatDefOf.Beauty, beauty);
+
+      if (glow.overlit && glowComp.Props.overlightRadius != 2.2f) {
+        glowComp.Props.overlightRadius = 2.2f;
+      }
+      if (!glow.overlit && glowComp.Props.overlightRadius != 0f) {
+        glowComp.Props.overlightRadius = 0f;
+      }
+
+      glowComp.Props.glowRadius = glow.radius;
+      glowComp.Props.glowColor = glow.color;
+      StatExtension.SetStatBaseValue(def, StatDefOf.Beauty, glow.beauty);
+
       Find.MapDrawer.MapMeshDirty(Position, MapMeshFlag.Buildings);
       Find.GlowGrid.RegisterGlower(glowComp);
     }

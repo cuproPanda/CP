@@ -1,6 +1,8 @@
 ﻿using Verse;
 
 namespace CorePanda {
+  //TODO: Change to SunlightManager, refactor all using classes
+
   /// <summary>
   /// Handles sunlight based on weather
   /// </summary>
@@ -49,8 +51,7 @@ namespace CorePanda {
       // These weathers provide 60% sunlight
       else if (weatherDef == WeatherDef.Named("Fog") ||
                weatherDef == WeatherDef.Named("Rain") ||
-               weatherDef == WeatherDef.Named("SnowGentle") ||
-               weatherDef == WeatherDef.Named("DryThunderstorm")) {
+               weatherDef == WeatherDef.Named("SnowGentle")) {
         wLight = WeatherLight.Darkened;
         sunStrength = 0.6f;
         return;
@@ -58,6 +59,7 @@ namespace CorePanda {
       // These weathers get only 25% sunlight
       else if (weatherDef == WeatherDef.Named("FoggyRain") ||
                weatherDef == WeatherDef.Named("SnowHard") ||
+               weatherDef == WeatherDef.Named("DryThunderstorm") ||
                weatherDef == WeatherDef.Named("RainyThunderstorm")) {
         wLight = WeatherLight.Dark;
         sunStrength = 0.25f;

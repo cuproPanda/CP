@@ -39,6 +39,7 @@
 		<costStuffCount>25</costStuffCount>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 		<tickerType>Rare</tickerType>
+		<tradeability>Never</tradeability>
 	</ThingDef>
 	
 	
