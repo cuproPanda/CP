@@ -4,9 +4,11 @@ using System.Linq;
 using RimWorld;
 using Verse;
 using Verse.AI;
+using UnityEngine;
 
 namespace CorePanda {
-
+  // TODO: Change thoughts, CabinFever pawn gets current thought,
+  // normal pawn gets reduced thought with different description
   internal class JobDriver_LookOutWindow : JobDriver_WatchBuilding {
 
     // Get adjacent cells
@@ -48,6 +50,8 @@ namespace CorePanda {
       // TargetIndex.A is the window glower
       // TargetIndex.B is the window
 
+      Building_WindowGlower glower = TargetA.Thing as Building_WindowGlower;
+
       // Set fail conditions
       this.FailOnDespawnedOrNull(TargetIndex.A);
       this.FailOnDestroyedOrNull(TargetIndex.B);
@@ -63,6 +67,9 @@ namespace CorePanda {
       low.socialMode = RandomSocialMode.Normal;
       low.tickAction = () => {
         base.WatchTickAction();
+        if (glower != null) {
+          actor.needs.joy.GainJoy(Mathf.Max(glower.WindowViewBeauty / 5, 0f) * 0.000144f, CurJob.def.joyKind);
+        }
         actor.Drawer.rotator.FaceCell(TargetB.Cell);
       };
       low.defaultCompleteMode = ToilCompleteMode.Delay;

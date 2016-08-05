@@ -24,13 +24,54 @@ namespace CorePanda {
       Room room = intVecSouth.GetRoom();
       IntVec3 inside = room.UsesOutdoorTemperature ? intVecNorth : intVecSouth;
       IntVec3 outside = room.UsesOutdoorTemperature ? intVecSouth : intVecNorth;
+      Rot4 glowerRot;
+      // Rotations are reversed so the glower can scan outside correctly
+      if (inside == (Position + IntVec3.North)) {
+        glowerRot = Rot4.South;
+      }
+      else if (inside == (Position + IntVec3.East)) {
+        glowerRot = Rot4.West;
+      }
+      else if (inside == (Position + IntVec3.South)) {
+        glowerRot = Rot4.North;
+      }
+      else {
+        glowerRot = Rot4.East;
+      }
 
       // Set the ownership of the window and glower (defaults to unowned)
       window.SetFactionDirect(Faction.OfPlayer);
       windowGlower.SetFactionDirect(Faction.OfPlayer);
+
       // Spawn the window and glower
       GenSpawn.Spawn(window, Position, Rotation);
-      GenSpawn.Spawn(windowGlower, inside);
+      SpawnGlower(windowGlower, inside, glowerRot, Position, outside);
+    }
+
+
+    private Building_WindowGlower SpawnGlower(Building_WindowGlower glower, IntVec3 loc, Rot4 rot, IntVec3 windowPos, IntVec3 outsidePos) {
+      if (!loc.InBounds()) {
+        Log.Error(string.Concat(new object[]
+        {
+          "Tried to spawn ",
+          glower,
+          " out of bounds at ",
+          loc,
+          "."
+        }));
+        return null;
+      }
+      GenSpawn.WipeExistingThings(loc, rot, glower.def, false);
+
+      glower.Rotation = rot;
+
+      glower.SetPositionDirect(IntVec3.Invalid);
+      glower.Position = loc;
+      glower.windowPos = windowPos;
+      glower.outside = outsidePos;
+      glower.SpawnSetup();
+
+      return glower;
     }
   }
 }

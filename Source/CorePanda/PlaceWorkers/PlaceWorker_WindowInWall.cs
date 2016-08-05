@@ -8,20 +8,20 @@ namespace CorePanda {
 
     /// <summary></summary>
     public override AcceptanceReport AllowsPlacing(BuildableDef def, IntVec3 center, Rot4 rot) {
-      IntVec3 loc = center + IntVec3.South.RotatedBy(rot);
-      IntVec3 loc2 = center + IntVec3.North.RotatedBy(rot);
-      Room room = loc.GetRoom();
-      Room room2 = loc2.GetRoom();
+      IntVec3 adjRelativeNorth = center + IntVec3.North.RotatedBy(rot);
+      IntVec3 adjRelativeSouth = center + IntVec3.South.RotatedBy(rot);
+      Room room = adjRelativeNorth.GetRoom();
+      Room room2 = adjRelativeSouth.GetRoom();
 
-      if (loc.Impassable() || loc2.Impassable()) {
+      if (adjRelativeNorth.Impassable() || adjRelativeSouth.Impassable()) {
         return "CP_WindowImpassable".Translate();
       }
-      // Using outdoor temperature is the easiest way I
-      // found to check whether a room is considered outside
-      if (room.UsesOutdoorTemperature && room2.UsesOutdoorTemperature) {
+
+      if (room.OpenRoofCount > 1 && room2.OpenRoofCount > 1) {
         return "CP_WindowDoubleOutside".Translate();
       }
-      if (!room.UsesOutdoorTemperature && !room2.UsesOutdoorTemperature) {
+
+      if (room.OpenRoofCount == 0 && room2.OpenRoofCount == 0) {
         return "CP_WindowDoubleInside".Translate();
       }
       return true;

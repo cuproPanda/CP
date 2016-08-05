@@ -8,14 +8,17 @@ using RimWorld;
 using Verse;
 
 namespace CorePanda {
-
+  /// <summary>
+  /// Tells each WindowGlower what stats it should have, so each one doesn't have to calculate the same stats
+  /// </summary>
   public class WindowManager : MapComponent {
 
     CompSunlight sunlightComp = new CompSunlight();
 
-    private List<Building_WindowGlower> windows = new List<Building_WindowGlower>();
+    private HashSet<Building_WindowGlower> glowers = new HashSet<Building_WindowGlower>();
 
     private float cachedSunlight;
+
     private readonly float overlightRadius = 2.2f;
 
     private readonly WindowGlow bright = new WindowGlow(new ColorInt(175, 175, 165, 0), 9f, 25f, true);
@@ -35,14 +38,15 @@ namespace CorePanda {
         if (sunlightComp.SimpleFactoredSunlight != cachedSunlight) {
           cachedSunlight = sunlightComp.SimpleFactoredSunlight;
 
-          for (int i = 0; i < windows.Count; i++) {
-            windows[i].UpdateGlow(GlowStats());
-          } 
+          foreach (Building_WindowGlower glower in glowers) {
+            glower.UpdateGlow(GlowStats());
+          }
         }
       }
     }
 
 
+    /// <summary> Determine what stats to use based on factored sunlight </summary>
     private WindowGlow GlowStats() {
       if (sunlightComp.SimpleFactoredSunlight >= 0.9f) {
         return bright;
@@ -63,6 +67,18 @@ namespace CorePanda {
         return lit_1;
       }
       return dark;
+    }
+
+
+    /// <summary> Add the given WindowGlower to the list of current glowers on the map </summary>
+    public void Register(Building_WindowGlower glower) {
+      glowers.Add(glower);
+    }
+
+
+    /// <summary> Remove the given WindowGlower from the list of current glowers on the map </summary>
+    public void Deregister(Building_WindowGlower glower) {
+      glowers.Remove(glower);
     }
   }
 }

@@ -5,8 +5,8 @@
 		<defName>CP_Job_LookOutWindow</defName>
 		<driverClass>CorePanda.JobDriver_LookOutWindow</driverClass>
 		<reportString>Looking out window.</reportString>
-		<joyDuration>4000</joyDuration>
-		<joyGainRate>0.8</joyGainRate>
+		<joyDuration>3000</joyDuration>
+		<joyGainRate>0.3</joyGainRate>
 		<joyKind>Meditative</joyKind>
 	</JobDef>
 
