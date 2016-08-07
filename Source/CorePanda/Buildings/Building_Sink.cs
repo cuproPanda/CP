@@ -23,14 +23,16 @@ namespace CorePanda {
 
     public override void Tick() {
       base.Tick();
+
+      // Find the current room. This prevents issues when rooms have changed
+      room = RoomQuery.RoomAt(Position);
+
       // If there isn't any fresh water in the sink, it doesn't provide cleanliness
       if (!refuelableComp.HasFuel && probableCleanliness == 50) {
         def.SetStatBaseValue(StatDefOf.Cleanliness, 0f);
         // Force the room to recheck its stats
-        if (room != null) {
-          room.Notify_TerrainChanged();
-          room.GetStatScoreStage(RoomStatDefOf.Cleanliness);
-        }
+        room.Notify_TerrainChanged();
+        room.GetStatScoreStage(RoomStatDefOf.Cleanliness);
         probableCleanliness = 0;
       }
 
@@ -38,10 +40,8 @@ namespace CorePanda {
       if (refuelableComp.HasFuel) {
         if (probableCleanliness == 0) {
           def.SetStatBaseValue(StatDefOf.Cleanliness, 50f);
-          if (room != null) {
-            room.Notify_TerrainChanged();
-            room.GetStatScoreStage(RoomStatDefOf.Cleanliness);
-          }
+          room.Notify_TerrainChanged();
+          room.GetStatScoreStage(RoomStatDefOf.Cleanliness);
           probableCleanliness = 50;
         }
 
