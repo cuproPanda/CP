@@ -83,13 +83,18 @@
 		<recipes>
 			<li>CP_GatherWater</li>
 		</recipes>
-		<tickerType>Rare</tickerType>
+		<tickerType>Normal</tickerType>
 		<comps>
 			<li>
 				<compClass>CompGatherSpot</compClass>
 			</li>
 			<li>
 				<compClass>CompQuality</compClass>
+			</li>
+			<li Class="CorePanda.CompProperties_ColdPusher">
+				<coldPerSecond>-21</coldPerSecond>
+				<coldPushMinTemperature>18</coldPushMinTemperature>
+				<constantPush>True</constantPush>
 			</li>
 		</comps>
 		<inspectorTabs>

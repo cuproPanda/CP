@@ -40,6 +40,7 @@ Materials needed to upgrade: \n{2}
 	
 	<!-- Placement Restrictors -->
 	<CP_MustBePlacedOnWall>{0} must be placed on a wall.</CP_MustBePlacedOnWall>
+	<CP_MustPlaceUnThickroofed>Can't place under a thick roof.</CP_MustPlaceUnThickroofed>
 	
 	<!-- Vent -->
 	<CP_ToggleVent>Open/Close the vent</CP_ToggleVent>

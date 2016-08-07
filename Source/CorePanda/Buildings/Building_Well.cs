@@ -12,6 +12,7 @@ namespace CorePanda {
     private float containedWaterInt = 0f;
     private bool hasEnoughWater = false;
     private float biomeMultiplier;
+    private CompColdPusher coldpusherComp;
 
     public float ContainedWater {
       get { return containedWaterInt; }
@@ -31,6 +32,8 @@ namespace CorePanda {
 
     public override void SpawnSetup() {
       base.SpawnSetup();
+
+      coldpusherComp = GetComp<CompColdPusher>();
 
       // Get the map's rainfall, at a min of 100 and a max of 1000,
       // then divide by 1000. Values will be somewhere between 0.1f and 1.0f
@@ -57,23 +60,34 @@ namespace CorePanda {
     }
 
 
-    public override void TickRare() {
-      base.TickRare();
+    public override void Tick() {
+      base.Tick();
 
+      if (Position.GetTemperature() > coldpusherComp.Props.ColdPushMinTemperature) {
+        coldpusherComp.SimplePush(60f / biomeMultiplier);
+      }
+
+      if (Find.TickManager.TicksGame % 25 == 0) {
+        CalculateWater();
+      }
+    }
+
+
+    private void CalculateWater() {
       // If there is sufficient precipitation
       if (Find.WeatherManager.RainRate > 0.2f || Find.WeatherManager.SnowRate > 0.7f) {
         // If the well is unroofed, it gets filled directly
         if (!Position.Roofed()) {
-          AddOrRemoveWater(20f);
+          AddOrRemoveWater(2f);
         }
         // If the well is roofed, account for increased ground saturation
         if (Position.Roofed()) {
-          AddOrRemoveWater(5f * biomeMultiplier);
+          AddOrRemoveWater(0.5f * biomeMultiplier);
         }
       }
 
       // Fill the well a little, simulating ground saturation from the water table
-      AddOrRemoveWater(8f * biomeMultiplier);
+      AddOrRemoveWater(0.8f * biomeMultiplier);
 
       // If the well has 1200 water or more, there's enough water to fill another bucket
       if (containedWaterInt >= 1200f) {
