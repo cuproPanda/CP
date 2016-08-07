@@ -44,5 +44,8 @@ Materials needed to upgrade: \n{2}
 	<!-- Vent -->
 	<CP_ToggleVent>Open/Close the vent</CP_ToggleVent>
 	
+	<!-- Well -->
+	<CP_WaterLevel>Water level</CP_WaterLevel>
+	
 
 </LanguageData>

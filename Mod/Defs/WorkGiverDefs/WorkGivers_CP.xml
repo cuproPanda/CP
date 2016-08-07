@@ -9,7 +9,7 @@
 	<WorkGiverDef>
 		<defName>CP_DoBillsGatherWater</defName>
 		<label>gather water at well</label>
-		<giverClass>WorkGiver_DoBill</giverClass>
+		<giverClass>CorePanda.WorkGiver_DoBillWell</giverClass>
 		<workType>Hauling</workType>
 		<priorityInType>93</priorityInType>
 		<fixedBillGiverDefs>

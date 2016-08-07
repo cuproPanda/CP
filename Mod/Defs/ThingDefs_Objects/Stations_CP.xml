@@ -43,7 +43,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>CP_Well</defName>
 		<label>well</label>
-		<ThingClass>Building_WorkTable</ThingClass>
+		<ThingClass>CorePanda.Building_Well</ThingClass>
 		<Description>A well dug deep into the ground for extracting clean drinking water.</Description>
 		<graphicData>
 			<texPath>Cupro/Object/Station/Well/Well</texPath>
@@ -83,6 +83,7 @@
 		<recipes>
 			<li>CP_GatherWater</li>
 		</recipes>
+		<tickerType>Rare</tickerType>
 		<comps>
 			<li>
 				<compClass>CompGatherSpot</compClass>
