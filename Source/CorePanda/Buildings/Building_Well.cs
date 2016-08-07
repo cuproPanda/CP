@@ -37,7 +37,7 @@ namespace CorePanda {
       biomeMultiplier = Mathf.Min(Mathf.Max(Find.Map.WorldSquare.rainfall, 100), 1000f) / 1000;
 
       // Add beginning water, so the well doesn't start completely dry
-      AddOrRemoveWater(500 * biomeMultiplier);
+      AddOrRemoveWater(1500 * biomeMultiplier);
     }
 
 
@@ -94,7 +94,16 @@ namespace CorePanda {
       stringBuilder.Append(base.GetInspectString());
 
       // Display the water level
-      stringBuilder.AppendLine("CP_WaterLevel".Translate() + ": (" + containedWaterInt.ToString("####0") + ")");
+      stringBuilder.AppendLine("CP_WaterLevel".Translate() + ": " + containedWaterInt.ToString("####0"));
+
+      // Display whether there's enough water to fill a bucket
+      stringBuilder.Append("CP_CanFillBucket".Translate() + ": ");
+      if (hasEnoughWater) {
+        stringBuilder.AppendLine("Yes".Translate());
+      }
+      if (!hasEnoughWater) {
+        stringBuilder.AppendLine("No".Translate());
+      }
 
       return stringBuilder.ToString();
     }

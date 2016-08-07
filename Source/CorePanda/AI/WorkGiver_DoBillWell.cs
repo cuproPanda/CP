@@ -36,8 +36,8 @@ namespace CorePanda {
         return false;
       }
 
-      // Make sure the well has enough water
-      if (well.CanWorkHere) {
+      // Make sure the well has enough water and the bill is valid
+      if (well.CanWorkHere && well.billStack.AnyShouldDoNow) {
         return true;
       }
 

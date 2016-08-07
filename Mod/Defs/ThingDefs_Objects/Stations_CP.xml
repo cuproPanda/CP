@@ -153,6 +153,45 @@
 			<heatPerTickWhileWorking>0.6</heatPerTickWhileWorking>
 		</building>
 	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase">
+		<DefName>CP_Quern</DefName>
+		<label>quern</label>
+		<ThingClass>Building_WorkTable</ThingClass>
+		<Description>A large metal or stone mill used for grinding resources.</Description>
+		<graphicData>
+			<texPath>Cupro/Object/Station/Quern/Quern</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+		<Size>(1,1)</Size>
+		<stuffCategories>
+			<li>Stony</li>
+			<li>Metallic</li>
+		</stuffCategories>
+		<costStuffCount>80</costStuffCount>
+		<altitudeLayer>Building</altitudeLayer>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<WorkToMake>500</WorkToMake>
+			<MaxHitPoints>200</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<Beauty>3</Beauty>
+			<Cleanliness>-5</Cleanliness>
+		</statBases>
+		<DesignationCategory>Production</DesignationCategory>
+		<fillPercent>0.5</fillPercent>
+		<Passability>PassThroughOnly</Passability>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+	</ThingDef>
 
 
 	<ThingDef ParentName="ResourcePitBase">
