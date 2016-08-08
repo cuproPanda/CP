@@ -39,7 +39,15 @@ namespace CorePanda {
 
       if (Props.HangingType == HangingType.Ceiling) {
         // Minify this if the ceiling is missing
-        if (!parent.Position.Roofed()) {
+        int occCells = 0;
+        int roofCells = 0;
+        foreach (IntVec3 current in parent.OccupiedRect()) {
+          occCells++;
+          if (!Find.RoofGrid.Roofed(current)) {
+            roofCells++;
+          }
+        }
+        if (((float)(occCells - roofCells) / occCells) < 0.5f) {
           Minify();
         }
       }

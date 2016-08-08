@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>  
+	<!-- 25 glass, 45 metal for 2x2 -->
 
-	<ThingDef Name="ChandelierBase" ParentName="FurnitureBase" Abstract="True">
+	<ThingDef Name="ChanPart_Base" ParentName="FurnitureBase" Abstract="True">
 		<category>Building</category>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -23,43 +24,34 @@
 	</ThingDef>
 	
 	
-	<ThingDef Name="ChandelierBowlBase" ParentName="ChandelierBase" Abstract="True">
+	<ThingDef Name="ChanPart_Bowl_Base" ParentName="ChanPart_Base" Abstract="True">
 		<thingClass>CorePanda.Building_ChandelierBowl</thingClass>
 		<graphicData>
 			<texPath>Cupro/Object/Furniture/Chandelier/ChandelierGlass</texPath>
 			<shaderType>Transparent</shaderType>
-			<drawSize>(2,2)</drawSize>
 		</graphicData>
 		<designationCategory>Unplaceable</designationCategory>
-		<size>(2,2)</size>
 		<selectable>false</selectable>
 		<stuffCategories>
 			<li>CP_Glass</li>
 		</stuffCategories>
-		<costStuffCount>25</costStuffCount>
 		<altitudeLayer>MoteOverhead</altitudeLayer>
 		<tickerType>Rare</tickerType>
 		<tradeability>Never</tradeability>
 	</ThingDef>
 	
 	
-	<ThingDef Name="ChandelierSupportBase" ParentName="ChandelierBase" Abstract="True">
+	<ThingDef Name="ChanPart_Support_Base" ParentName="ChanPart_Base" Abstract="True">
 		<thingClass>CorePanda.Building_Chandelier</thingClass>
 		<graphicData>
 			<texPath>Cupro/Object/Furniture/Chandelier/Chandelier</texPath>
 			<shaderType>CutoutComplex</shaderType>
-			<drawSize>(2,2)</drawSize>
 		</graphicData>
-		<designationCategory>Furniture</designationCategory>
-		<size>(2,2)</size>
+		<designationCategory>Lighting</designationCategory>
 		<stuffCategories>
 			<li>Metallic</li>
 		</stuffCategories>
-		<costStuffCount>45</costStuffCount>
 		<altitudeLayer>FlyingItem</altitudeLayer>
-		<statBases>
-			<WorkToMake>500</WorkToMake>
-		</statBases>
 		<tickerType>Rare</tickerType>
 		<placeWorkers>
 			<li>CorePanda.PlaceWorker_Roofed</li>
@@ -71,11 +63,6 @@
 		<Comps>
 			<li>
 				<compClass>CompQuality</compClass>
-			</li>
-			<li Class="CompProperties_Power">
-				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>150</basePowerConsumption>
-				<shortCircuitInRain>false</shortCircuitInRain>
 			</li>
 			<li Class="CorePanda.CompProperties_Hanger">
 				<HangingType>Ceiling</HangingType>
@@ -94,47 +81,216 @@
 
 
 
-	<ThingDef ParentName="ChandelierSupportBase">
-		<defName>CP_Chandelier_Glass</defName>
+	<!-- =============== Glass =============== -->
+	
+	<ThingDef ParentName="ChanPart_Support_Base">
+		<defName>ChanPart_Support_Glass_1x1</defName>
+		<label>small chandelier (glass)</label>
+		<description>A simple chandelier with a glass bowl underneath. Can be hung from the ceiling over most objects.</description>
+		<graphicData>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<size>(1,1)</size>
+		<statBases>
+			<WorkToMake>350</WorkToMake>
+			<Beauty>10</Beauty>
+		</statBases>
+		<costStuffCount>25</costStuffCount>
+		<costList>
+			<CP_Glass>4</CP_Glass>
+		</costList>
+		<Comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>75</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>10</glowRadius>
+				<glowColor>(200,200,200,0)</glowColor>
+			</li>
+		</Comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="ChanPart_Support_Base">
+		<defName>ChanPart_Support_Glass_2x2</defName>
 		<label>chandelier (glass)</label>
 		<description>A simple chandelier with a glass bowl underneath. Can be hung from the ceiling over most objects.</description>
+		<graphicData>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<size>(2,2)</size>
 		<statBases>
+			<WorkToMake>500</WorkToMake>
 			<Beauty>20</Beauty>
 		</statBases>
+		<costStuffCount>45</costStuffCount>
 		<costList>
 			<CP_Glass>8</CP_Glass>
 		</costList>
 		<Comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>150</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>13</glowRadius>
 				<glowColor>(200,200,200,0)</glowColor>
 			</li>
 		</Comps>
 	</ThingDef>
-
-	<ThingDef ParentName="ChandelierSupportBase">
-		<defName>CP_Chandelier_Quartz</defName>
-		<label>chandelier (quartz)</label>
-		<description>A simple chandelier with a quartz bowl underneath. Can be hung from the ceiling over most objects.</description>
+	
+	<ThingDef ParentName="ChanPart_Support_Base">
+		<defName>ChanPart_Support_Glass_3x3</defName>
+		<label>large chandelier (glass)</label>
+		<description>A simple chandelier with a glass bowl underneath. Can be hung from the ceiling over most objects.</description>
+		<graphicData>
+			<drawSize>(3,3)</drawSize>
+		</graphicData>
+		<size>(3,3)</size>
 		<statBases>
+			<WorkToMake>750</WorkToMake>
 			<Beauty>30</Beauty>
 		</statBases>
+		<costStuffCount>70</costStuffCount>
+		<costList>
+			<CP_Glass>16</CP_Glass>
+		</costList>
+		<Comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>250</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>16</glowRadius>
+				<glowColor>(200,200,200,0)</glowColor>
+			</li>
+		</Comps>
+	</ThingDef>
+	
+	<!-- =============== Quartz =============== -->
+	
+	<ThingDef ParentName="ChanPart_Support_Base">
+		<defName>ChanPart_Support_Quartz_1x1</defName>
+		<label>small chandelier (quartz)</label>
+		<description>A simple chandelier with a quartz bowl underneath. Can be hung from the ceiling over most objects.</description>
+		<graphicData>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<size>(1,1)</size>
+		<statBases>
+			<WorkToMake>350</WorkToMake>
+			<Beauty>20</Beauty>
+		</statBases>
+		<costStuffCount>25</costStuffCount>
+		<costList>
+			<CP_FusedQuartz>4</CP_FusedQuartz>
+		</costList>
+		<Comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>75</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>11</glowRadius>
+				<glowColor>(216,216,216,0)</glowColor>
+			</li>
+		</Comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="ChanPart_Support_Base">
+		<defName>ChanPart_Support_Quartz_2x2</defName>
+		<label>chandelier (quartz)</label>
+		<description>A simple chandelier with a quartz bowl underneath. Can be hung from the ceiling over most objects.</description>
+		<graphicData>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<size>(2,2)</size>
+		<statBases>
+			<WorkToMake>500</WorkToMake>
+			<Beauty>30</Beauty>
+		</statBases>
+		<costStuffCount>45</costStuffCount>
 		<costList>
 			<CP_FusedQuartz>8</CP_FusedQuartz>
 		</costList>
 		<Comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>150</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>14</glowRadius>
-				<glowColor>(208,208,208,0)</glowColor>
+				<glowColor>(216,216,216,0)</glowColor>
+			</li>
+		</Comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="ChanPart_Support_Base">
+		<defName>ChanPart_Support_Quartz_3x3</defName>
+		<label>large chandelier (quartz)</label>
+		<description>A simple chandelier with a quartz bowl underneath. Can be hung from the ceiling over most objects.</description>
+		<graphicData>
+			<drawSize>(3,3)</drawSize>
+		</graphicData>
+		<size>(3,3)</size>
+		<statBases>
+			<WorkToMake>750</WorkToMake>
+			<Beauty>40</Beauty>
+		</statBases>
+		<costStuffCount>70</costStuffCount>
+		<costList>
+			<CP_FusedQuartz>16</CP_FusedQuartz>
+		</costList>
+		<Comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>250</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>17</glowRadius>
+				<glowColor>(216,216,216,0)</glowColor>
 			</li>
 		</Comps>
 	</ThingDef>
 	
 	
-	<ThingDef ParentName="ChandelierBowlBase">
-		<defName>CP_ChandelierPart_Bowl</defName>
+	<!-- =============== Bowl =============== -->
+	
+	
+	<ThingDef ParentName="ChanPart_Bowl_Base">
+		<defName>ChanPart_Bowl_1x1</defName>
 		<label>chandelier bowl</label>
 		<description>null</description>
+		<graphicData>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<size>(1,1)</size>
+	</ThingDef>
+	
+	<ThingDef ParentName="ChanPart_Bowl_Base">
+		<defName>ChanPart_Bowl_2x2</defName>
+		<label>chandelier bowl</label>
+		<description>null</description>
+		<graphicData>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<size>(2,2)</size>
+	</ThingDef>
+	
+	<ThingDef ParentName="ChanPart_Bowl_Base">
+		<defName>ChanPart_Bowl_3x3</defName>
+		<label>chandelier bowl</label>
+		<description>null</description>
+		<graphicData>
+			<drawSize>(3,3)</drawSize>
+		</graphicData>
+		<size>(3,3)</size>
 	</ThingDef>
 
 </ThingDefs>
