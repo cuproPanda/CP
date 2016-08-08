@@ -95,6 +95,15 @@ namespace CorePanda {
 
 
     /// <summary>
+    /// Add water to the tank directly
+    /// </summary>
+    public virtual void AddWaterDirect(float amount) {
+      // Calculate the water level
+      waterLevelInt = Mathf.Clamp(waterLevelInt + amount, 0f, WaterLevelMax);
+    }
+
+
+    /// <summary>
     /// Consume water from the tank
     /// <para>Make sure there is enough water stored prior to calling this</para>
     /// </summary>
