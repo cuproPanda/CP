@@ -17,7 +17,6 @@ namespace CorePanda {
 
     private int tickRares = 0;
     private float cachedWindowViewBeauty = 0f;
-    private WindowGlow cachedWindowGlow;
 
     private WindowManager mgr = Find.Map.GetComponent<WindowManager>();
 
@@ -38,7 +37,6 @@ namespace CorePanda {
       Scribe_Values.LookValue(ref outside, "CP_OutsidePosition", IntVec3.Invalid);
       Scribe_Values.LookValue(ref tickRares, "CP_WindowGlowerTickRares", 0);
       Scribe_Values.LookValue(ref cachedWindowViewBeauty, "CP_WindowViewBeauty", 0f);
-      Scribe_Values.LookValue(ref cachedWindowGlow, "CP_CachedWindowGlow", new WindowGlow(new ColorInt(1, 1, 2, 0), 1f, 0f));
     }
 
 
@@ -46,7 +44,6 @@ namespace CorePanda {
     public override void SpawnSetup() {
       base.SpawnSetup();
       glowComp = GetComp<CompGlower>();
-      cachedWindowGlow = new WindowGlow(new ColorInt(1, 1, 2, 0), 1f, 0f);
       mgr.Register(this);
       Find.GlowGrid.RegisterGlower(glowComp);
       GetWindowViewBeauty();
@@ -110,7 +107,6 @@ namespace CorePanda {
 
     /// <summary></summary>
     public void UpdateGlow(WindowGlow glow) {
-      cachedWindowGlow = glow;
 
       // Update the CompGlower
       Find.GlowGrid.DeRegisterGlower(glowComp);
