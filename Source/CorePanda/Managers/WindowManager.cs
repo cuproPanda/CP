@@ -13,6 +13,7 @@ namespace CorePanda {
     private HashSet<Building_WindowGlower> glowers = new HashSet<Building_WindowGlower>();
 
     private float cachedSunlight;
+    private WindowGlow cachedGlow;
 
     private readonly float overlightRadius = 2.2f;
 
@@ -33,8 +34,10 @@ namespace CorePanda {
         if (sunlightComp.SimpleFactoredSunlight != cachedSunlight) {
           cachedSunlight = sunlightComp.SimpleFactoredSunlight;
 
+          cachedGlow = GlowStats();
+
           foreach (Building_WindowGlower glower in glowers) {
-            glower.UpdateGlow(GlowStats());
+            glower.UpdateGlow(cachedGlow);
           }
         }
       }

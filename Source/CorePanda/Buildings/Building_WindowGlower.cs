@@ -48,6 +48,8 @@ namespace CorePanda {
       glowComp = GetComp<CompGlower>();
       cachedWindowGlow = new WindowGlow(new ColorInt(1, 1, 2, 0), 1f, 0f);
       mgr.Register(this);
+      Find.GlowGrid.RegisterGlower(glowComp);
+      GetWindowViewBeauty();
     }
 
 
@@ -65,11 +67,7 @@ namespace CorePanda {
       base.TickRare();
       GetAdjacentWindow();
 
-      if (tickRares % 4 == 0) {
-        UpdateGlow(cachedWindowGlow);
-      }
-
-      if (tickRares == 0 || tickRares % 15 == 0) {
+      if (tickRares % 15 == 0) {
         GetWindowViewBeauty();
       }
 
@@ -136,6 +134,7 @@ namespace CorePanda {
 
     // This allows for seeing around walls/buildings
     // that would normally not allow seeing around.
+    // TODO: efficiently remove unseen cells
     private List<IntVec3> GetWindowLOS(int range = 15) {
       List<IntVec3> tempCells = new List<IntVec3>();
       List<IntVec3> cellsToSearch = new List<IntVec3>();
