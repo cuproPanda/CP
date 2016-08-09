@@ -47,6 +47,7 @@ Materials needed to upgrade: \n{2}
 	
 	<!-- Well -->
 	<CP_WaterLevel>Water level</CP_WaterLevel>
+	<CP_CanFillBucket>Enough water to fill a bucket</CP_CanFillBucket>
 	
 
 </LanguageData>

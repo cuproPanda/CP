@@ -127,7 +127,7 @@
 		</recipeUsers>
 	</RecipeDef>
 
-	<RecipeDef Name="CP_CrushGravel">
+	<RecipeDef>
 		<defName>CP_CrushGravel</defName>
 		<label>crush chunks into gravel</label>
 		<description>Crush chunks into gravel.</description>
@@ -161,7 +161,7 @@
 		</recipeUsers>
 	</RecipeDef>
 
-	<RecipeDef Name="CP_CrushSand">
+	<RecipeDef>
 		<defName>CP_CrushSand</defName>
 		<label>crush gravel into sand</label>
 		<description>Crush gravel into sand.</description>
@@ -195,7 +195,7 @@
 		</recipeUsers>
 	</RecipeDef>
 
-	<RecipeDef Name="CP_CrushClay">
+	<RecipeDef>
 		<defName>CP_CrushClay</defName>
 		<label>crush sand into clay</label>
 		<description>Crush sand into a fine dust, and mix with water.</description>
@@ -239,49 +239,105 @@
 	</RecipeDef>
 	
 	
-	<RecipeDef ParentName="CP_CrushGravel">
+	<RecipeDef Name="GrindBase" Abstract="True">
+		<workSpeedStat>SmoothingSpeed</workSpeedStat>
+		<workSkill>Crafting</workSkill>
+		<workSkillLearnFactor>0.10</workSkillLearnFactor>
+		<effectWorking>CutStone</effectWorking>
+		<soundWorking>CP_Quern</soundWorking>
+		<recipeUsers>
+			<li>CP_Quern</li>
+		</recipeUsers>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="GrindBase">
 		<defName>CP_GrindGravel</defName>
 		<label>grind chunks into gravel</label>
 		<description>Grind chunks into gravel.</description>
+		<jobString>Making gravel.</jobString>
 		<workAmount>2000</workAmount>
 		<workSkill>Crafting</workSkill>
-		<soundWorking>CP_Quern</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>StoneChunks</li>
+					</categories>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>StoneChunks</li>
+			</categories>
+		</fixedIngredientFilter>
 		<products>
 			<CP_Gravel>10</CP_Gravel>
 		</products>
-		<recipeUsers>
-			<li>CP_Quern</li>
-		</recipeUsers>
 	</RecipeDef>
 	
-	<RecipeDef ParentName="CP_CrushSand">
+	<RecipeDef ParentName="GrindBase">
 		<defName>CP_GrindSand</defName>
 		<label>grind gravel into sand</label>
 		<description>Grind gravel into sand.</description>
+		<jobString>Making sand.</jobString>
 		<workAmount>1500</workAmount>
 		<workSkill>Crafting</workSkill>
-		<soundWorking>CP_Quern</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CP_Gravel</li>
+					</thingDefs>
+				</filter>
+				<count>12</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>CP_Gravel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
 		<products>
 			<CP_Sand>15</CP_Sand>
 		</products>
-		<recipeUsers>
-			<li>CP_Quern</li>
-		</recipeUsers>
 	</RecipeDef>
 	
-	<RecipeDef ParentName="CP_CrushClay">
+	<RecipeDef ParentName="GrindBase">
 		<defName>CP_GrindClay</defName>
 		<label>grind sand into clay</label>
 		<description>Grind sand into a fine dust, and mix with water.</description>
+		<jobString>Making clay.</jobString>
 		<workAmount>1000</workAmount>
 		<workSkill>Crafting</workSkill>
-		<soundWorking>CP_Quern</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CP_Sand</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CP_FreshWaterBucket</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>CP_Sand</li>
+				<li>CP_FreshWaterBucket</li>
+			</thingDefs>
+		</fixedIngredientFilter>
 		<products>
 			<CP_Clay>20</CP_Clay>
 		</products>
-		<recipeUsers>
-			<li>CP_Quern</li>
-		</recipeUsers>
 	</RecipeDef>
 	
 

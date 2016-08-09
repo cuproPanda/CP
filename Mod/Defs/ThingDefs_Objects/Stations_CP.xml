@@ -166,7 +166,7 @@
 		<Description>A large metal or stone mill used for grinding resources.</Description>
 		<graphicData>
 			<texPath>Cupro/Object/Station/Quern/Quern</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
+			<graphicClass>Graphic_Multi</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
 		</graphicData>
 		<Size>(1,1)</Size>

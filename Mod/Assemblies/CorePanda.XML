@@ -306,6 +306,11 @@
             </summary>
             <param name="divisor">125f is a good starting divisor for a 1-cell tank that accepts water every tick</param>
         </member>
+        <member name="M:CorePanda.CompRainTank.AddWaterDirect(System.Single)">
+            <summary>
+            Add water to the tank directly
+            </summary>
+        </member>
         <member name="M:CorePanda.CompRainTank.UseWater(System.Single)">
             <summary>
             Consume water from the tank
