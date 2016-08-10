@@ -32,7 +32,8 @@ namespace CorePanda {
       // Spawn water
       Toil gather = new Toil();
       gather.initAction = () => {
-        GenSpawn.Spawn(ThingDef.Named("CP_FreshWaterBucket"), actor.Position);
+        Thing bucket = ThingMaker.MakeThing(ThingDef.Named("CP_FreshWaterBucket"));
+        GenPlace.TryPlaceThing(bucket, actor.Position, ThingPlaceMode.Near);
         well.Notify_IterationCompleted();
         pawn.jobs.EndCurrentJob(JobCondition.Succeeded);
       };
