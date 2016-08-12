@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
 
 using UnityEngine;
 using RimWorld;
@@ -16,10 +17,6 @@ namespace CorePanda {
 
     public float ContainedWater {
       get { return containedWaterInt; }
-    }
-
-    public bool CanWorkHere {
-      get { return hasEnoughWater; }
     }
 
 
@@ -44,14 +41,48 @@ namespace CorePanda {
     }
 
 
-    public void Notify_IterationCompleted() {
+    // Allow filling the well in god mode -- for testing
+    public override IEnumerable<Gizmo> GetGizmos() {
+      if (DebugSettings.godMode) {
+        Command_Action fillWell = new Command_Action() {
+
+          icon = BaseContent.BadTex,
+          defaultLabel = "Debug: Fill",
+          defaultDesc = "Debug: fill well with water",
+          activateSound = SoundDef.Named("Click"),
+          action = () => { AddOrRemoveWater(99999f); },
+        };
+        yield return fillWell; 
+      }
+
+      if (hasEnoughWater) {
+        Command_Action emptyWell = new Command_Action() {
+
+          icon = ContentFinder<Texture2D>.Get("Cupro/Item/Material/WaterBucket"),
+          defaultLabel = "CP_EmptyWell".Translate(),
+          defaultDesc = "CP_EmptyWellDesc".Translate(),
+          activateSound = SoundDef.Named("Click"),
+          action = () => { EmptyWell(); },
+        };
+        yield return emptyWell; 
+      }
+
+      if (base.GetGizmos() != null) {
+        foreach (Command c in base.GetGizmos()) {
+          yield return c;
+        }
+      }
+    }
+
+
+    public void BucketSpawned(int buckets = 1) {
       // Make sure there is enough water to remove. Do nothing, but send a warning
-      if ((containedWaterInt - 1200f) < 0 ) {
+      if (containedWaterInt - (1200f * buckets) < 0 ) {
         Log.Warning("CorePanda:: Drawing more water from the well than it was supposed to have.");
       }
 
-      // Remove 1200 water
-      AddOrRemoveWater(-1200f);
+      // Remove 1200 water per bucket
+      AddOrRemoveWater(-1200f * buckets);
 
       // If there's less than 1200 water remaining, there's not enough water to fill another bucket
       if (containedWaterInt < 1200f) {
@@ -69,6 +100,32 @@ namespace CorePanda {
 
       if (Find.TickManager.TicksGame % 25 == 0) {
         CalculateWater();
+      }
+    }
+
+
+    private void EmptyWell() {
+      Thing bucket = Position.GetThingList().Find(b => b.def == ThingDef.Named("CP_FreshWaterBucket"));
+
+      if (bucket != null && bucket.stackCount >= 10) {
+        Messages.Message("CP_TooManyBuckets".Translate(), Position, MessageSound.Negative);
+        return;
+      }
+
+      if (bucket != null && bucket.stackCount < 10) {
+        while (hasEnoughWater) {
+          bucket.stackCount++;
+          BucketSpawned();
+        }
+        bucket.SetForbidden(true, false);
+      }
+
+      if (bucket == null) {
+        Thing newBucket = ThingMaker.MakeThing(ThingDef.Named("CP_FreshWaterBucket"));
+        newBucket.stackCount = Mathf.FloorToInt(containedWaterInt / 1200f);
+        GenSpawn.Spawn(newBucket, Position);
+        Position.GetThingList().Find(b => b.def == ThingDef.Named("CP_FreshWaterBucket")).SetForbidden(true, false);
+        BucketSpawned(newBucket.stackCount);
       }
     }
 
@@ -111,12 +168,12 @@ namespace CorePanda {
       stringBuilder.AppendLine("CP_WaterLevel".Translate() + ": " + containedWaterInt.ToString("####0"));
 
       // Display whether there's enough water to fill a bucket
-      stringBuilder.Append("CP_CanFillBucket".Translate() + ": ");
+      stringBuilder.Append("CP_Buckets".Translate() + ": ");
       if (hasEnoughWater) {
-        stringBuilder.AppendLine("Yes".Translate());
+        stringBuilder.AppendLine(Mathf.FloorToInt(containedWaterInt / 1200).ToString());
       }
       if (!hasEnoughWater) {
-        stringBuilder.AppendLine("No".Translate());
+        stringBuilder.AppendLine("0");
       }
 
       return stringBuilder.ToString();

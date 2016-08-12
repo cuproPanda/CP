@@ -5,24 +5,6 @@
 
 	<!-- ============= Crafting - misc ============= -->
 
-
-	<WorkGiverDef>
-		<defName>CP_DoBillsGatherWater</defName>
-		<label>gather water at well</label>
-		<giverClass>CorePanda.WorkGiver_DoBillWell</giverClass>
-		<workType>Hauling</workType>
-		<priorityInType>93</priorityInType>
-		<fixedBillGiverDefs>
-			<li>CP_Well</li>
-		</fixedBillGiverDefs>
-		<verb>gather at</verb>
-		<gerund>gathering at</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
-		<prioritizeSustains>true</prioritizeSustains>
-	</WorkGiverDef>
-
 	<WorkGiverDef>
 		<defName>CP_DoSimpleBills</defName>
 		<label>do simple crafting jobs</label>

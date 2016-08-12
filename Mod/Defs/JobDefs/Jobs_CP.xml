@@ -9,11 +9,5 @@
 		<joyGainRate>0.3</joyGainRate>
 		<joyKind>Meditative</joyKind>
 	</JobDef>
-	
-	<JobDef>
-    <defName>CP_Job_GatherWater</defName>
-    <driverClass>CorePanda.JobDriver_DoBillWell</driverClass>
-    <reportString>Gathering water at TargetA.</reportString>
-  </JobDef>
 
 </Defs>

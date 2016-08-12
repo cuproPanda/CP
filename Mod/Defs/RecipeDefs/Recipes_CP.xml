@@ -37,18 +37,6 @@
 		<workSkill>Cooking</workSkill>
 	</RecipeDef>
 
-	<RecipeDef>
-		<defName>CP_GatherWater</defName>
-		<label>gather water</label>
-		<description>Gather fresh water from deep underground.</description>
-		<jobString>Gathering water.</jobString>
-		<workAmount>1000</workAmount>
-		<workSkill>Crafting</workSkill>
-		<products>
-			<CP_FreshWaterBucket>1</CP_FreshWaterBucket>
-		</products>
-	</RecipeDef>
-
 	<RecipeDef Name="CP_MakeGlassBase" Abstract="True">
 		<label>make glass</label>
 		<jobString>Making glass.</jobString>
