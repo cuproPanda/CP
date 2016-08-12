@@ -45,10 +45,14 @@ Materials needed to upgrade: \n{2}
 	<!-- Vent -->
 	<CP_ToggleVent>Open/Close the vent</CP_ToggleVent>
 	
-	<!-- Well -->
+	<!-- Water containers -->
 	<CP_WaterLevel>Water level</CP_WaterLevel>
 	<CP_EmptyWell>Empty well</CP_EmptyWell>
 	<CP_EmptyBarrel>Empty barrel</CP_EmptyBarrel>
+	<CP_SealBarrel>Seal barrel</CP_SealBarrel>
+	<CP_UnsealBarrel>Unseal barrel</CP_UnsealBarrel>
+	<CP_SealBarrelDesc>Seal the barrel to prevent evaporation</CP_SealBarrelDesc>
+	<CP_UnsealBarrelDesc>Unseal the barrel to fill with water</CP_UnsealBarrelDesc>
 	<CP_EmptyTankDesc>Gather water into buckets to be hauled away.</CP_EmptyTankDesc>
 	<CP_TooManyBuckets>There are currently too many buckets at the {0}. Haul existing buckets away.</CP_TooManyBuckets>
 	<CP_Buckets>Buckets available</CP_Buckets>

@@ -7,9 +7,11 @@ namespace CorePanda {
 
   internal class Building_RainBarrel : Building_WaterGatherer {
 
-    private Graphic BarrelEmpty;
-    private Graphic BarrelPartial;
-    private Graphic BarrelFull;
+    private Graphic barrelSealed;
+    private Graphic barrelEmpty;
+    private Graphic barrelPartial;
+    private Graphic barrelFull;
+    private bool isSealed = false;
 
     protected override float maxWater {
       get { return bucketVolume * 10; }
@@ -17,31 +19,40 @@ namespace CorePanda {
 
     public override Graphic Graphic {
       get {
+        if (isSealed) {
+          return barrelSealed;
+        }
         if (ContainedWater > (maxWater * 0.7f)) {
-          return BarrelFull;
+          return barrelFull;
         }
         if (ContainedWater > (maxWater * 0.3f)) {
-          return BarrelPartial;
+          return barrelPartial;
         }
-        return BarrelEmpty;
+        return barrelEmpty;
       }
+    }
+
+
+    public override void ExposeData() {
+      base.ExposeData();
+      Scribe_Values.LookValue(ref isSealed, "CP_RainBarrel_isSealed", false);
     }
 
 
     public override void SpawnSetup() {
       base.SpawnSetup();
 
-      BarrelEmpty = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Empty");
-      BarrelPartial = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Partial");
-      BarrelFull = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Full");
-  }
+      barrelSealed = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Sealed");
+      barrelEmpty = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Empty");
+      barrelPartial = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Partial");
+      barrelFull = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Full");
+    }
 
 
     // Allow filling the barrel in god mode -- for testing
     public override IEnumerable<Gizmo> GetGizmos() {
       if (DebugSettings.godMode) {
         Command_Action fillBarrel = new Command_Action() {
-
           icon = BaseContent.BadTex,
           defaultLabel = "Debug: Fill",
           defaultDesc = "Debug: fill barrel with water",
@@ -51,9 +62,29 @@ namespace CorePanda {
         yield return fillBarrel;
       }
 
+      if (!isSealed) {
+        Command_Action sealBarrel = new Command_Action() {
+          icon = ContentFinder<Texture2D>.Get("Cupro/Object/Utility/RainBarrel/RainBarrel_Sealed", false),
+          defaultLabel = "CP_SealBarrel".Translate(),
+          defaultDesc = "CP_SealBarrelDesc".Translate(),
+          activateSound = SoundDef.Named("Click"),
+          action = () => { isSealed = true; },
+        };
+        yield return sealBarrel; 
+      }
+      if (isSealed) {
+        Command_Action unsealBarrel = new Command_Action() {
+          icon = ContentFinder<Texture2D>.Get("Cupro/Object/Utility/RainBarrel/RainBarrel_Full", false),
+          defaultLabel = "CP_UnsealBarrel".Translate(),
+          defaultDesc = "CP_UnsealBarrelDesc".Translate(),
+          activateSound = SoundDef.Named("Click"),
+          action = () => { isSealed = false; },
+        };
+        yield return unsealBarrel;
+      }
+
       if (hasEnoughWater) {
         Command_Action emptyBarrel = new Command_Action() {
-
           icon = ContentFinder<Texture2D>.Get("Cupro/Item/Material/WaterBucket"),
           defaultLabel = "CP_EmptyBarrel".Translate(),
           defaultDesc = "CP_EmptyTankDesc".Translate(),
@@ -75,7 +106,12 @@ namespace CorePanda {
       base.Tick();
 
       if (Find.TickManager.TicksGame % 25 == 0) {
-        CalculateWater();
+        if (!isSealed) {
+          CalculateWater(); 
+        }
+
+        // Manually update the graphic
+        Find.MapDrawer.MapMeshDirty(Position, MapMeshFlag.Things);
       }
     }
 

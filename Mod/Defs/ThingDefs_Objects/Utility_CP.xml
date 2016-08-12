@@ -7,7 +7,7 @@
 		<ThingClass>CorePanda.Building_RainBarrel</ThingClass>
 		<Description>A wooden barrel for collecting rain water.</Description>
 		<graphicData>
-			<texPath>Cupro/Object/Utility/RainBarrel/RainBarrel_Empty</texPath>
+			<texPath>Cupro/Object/Utility/RainBarrel/RainBarrel_Sealed</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<damageData>
 				<rect>(0.09375,0.296875,0.796875,0.703125)</rect>
@@ -27,6 +27,7 @@
 		<UseHitPoints>true</UseHitPoints>
 		<destroyable>true</destroyable>
 		<rotatable>false</rotatable>
+		<minifiedDef>MinifiedRainBarrel</minifiedDef>
 		<statBases>
 			<MaxHitPoints>120</MaxHitPoints>
 			<WorkToMake>500</WorkToMake>
