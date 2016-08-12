@@ -1,7 +1,48 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>CP_RainBarrel</defName>
+		<label>rain barrel</label>
+		<ThingClass>CorePanda.Building_RainBarrel</ThingClass>
+		<Description>A wooden barrel for collecting rain water.</Description>
+		<graphicData>
+			<texPath>Cupro/Object/Utility/RainBarrel/RainBarrel_Empty</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<rect>(0.09375,0.296875,0.796875,0.703125)</rect>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<uiIconPath>Cupro/Object/Utility/RainBarrel/RainBarrel_Full</uiIconPath>
+		<fillPercent>0.4</fillPercent>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<costList>
+			<WoodLog>30</WoodLog>
+		</costList>
+		<altitudeLayer>Building</altitudeLayer>
+		<UseHitPoints>true</UseHitPoints>
+		<destroyable>true</destroyable>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+			<WorkToMake>500</WorkToMake>
+			<Flammability>1.7</Flammability>
+			<Beauty>1</Beauty>
+			<Cleanliness>1</Cleanliness>
+		</statBases>
+		<Size>(1,1)</Size>
+		<DesignationCategory>Misc</DesignationCategory>
+		<Passability>PassThroughOnly</Passability>
+		<pathCost>30</pathCost>
+		<surfaceType>Item</surfaceType>
+		<tickerType>Normal</tickerType>
+	</ThingDef>
 
-		<ThingDef ParentName="BuildingBase">
+	<ThingDef ParentName="BuildingBase">
 		<defName>CP_Well</defName>
 		<label>well</label>
 		<ThingClass>CorePanda.Building_Well</ThingClass>
@@ -38,13 +79,9 @@
 		<DesignationCategory>Misc</DesignationCategory>
 		<Passability>PassThroughOnly</Passability>
 		<pathCost>60</pathCost>
-		<interactionCellOffset>(0,0,1)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<tickerType>Normal</tickerType>
 		<comps>
-			<li>
-				<compClass>CompGatherSpot</compClass>
-			</li>
 			<li>
 				<compClass>CompQuality</compClass>
 			</li>

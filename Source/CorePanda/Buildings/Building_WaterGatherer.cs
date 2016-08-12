@@ -6,7 +6,7 @@ using Verse;
 
 namespace CorePanda {
 
-  internal class Building_WaterGatherer : Building_WorkTable {
+  internal class Building_WaterGatherer : Building {
 
     protected float containedWaterInt = 0f;
     protected readonly float bucketVolume = 1200f;
@@ -44,10 +44,10 @@ namespace CorePanda {
         Log.Warning("CorePanda:: Drawing more water from the " + def.label + " at " + Position.ToIntVec2 + " than it was supposed to have.");
       }
 
-      // Remove 1200 water per bucket
+      // Remove water based on amount of buckets spawned
       AddOrRemoveWater(-bucketVolume * buckets);
 
-      // If there's less than 1200 water remaining, there's not enough water to fill another bucket
+      // If there isn't enough water to fill a bucket, note it
       if (containedWaterInt < bucketVolume) {
         hasEnoughWater = false;
       }
@@ -96,16 +96,10 @@ namespace CorePanda {
       stringBuilder.Append(base.GetInspectString());
 
       // Display the water level
-      stringBuilder.AppendLine("CP_WaterLevel".Translate() + ": " + containedWaterInt.ToString("####0"));
+      stringBuilder.AppendLine("CP_WaterLevel".Translate() + ": " + containedWaterInt.ToString("#####0"));
 
       // Display whether there's enough water to fill a bucket
-      stringBuilder.Append("CP_Buckets".Translate() + ": ");
-      if (hasEnoughWater) {
-        stringBuilder.AppendLine(Mathf.FloorToInt(containedWaterInt / bucketVolume).ToString());
-      }
-      if (!hasEnoughWater) {
-        stringBuilder.AppendLine("0");
-      }
+      stringBuilder.Append("CP_Buckets".Translate() + ": " + Mathf.FloorToInt(containedWaterInt / bucketVolume).ToString());
 
       return stringBuilder.ToString();
     }

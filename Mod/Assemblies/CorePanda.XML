@@ -89,9 +89,6 @@
         <member name="M:CorePanda.Building_WindowSpawner.SpawnSetup">
             <summary></summary>
         </member>
-        <member name="M:CorePanda.Building_Well.GetInspectString">
-            <summary></summary>
-        </member>
         <member name="T:CorePanda.CompProperties_Hanger">
             <summary>
             Supplies CompHanger with hanging information
@@ -528,21 +525,6 @@
         </member>
         <member name="M:CorePanda.WindowManager.Deregister(CorePanda.Building_WindowGlower)">
             <summary> Remove the given WindowGlower from the list of current glowers on the map </summary>
-        </member>
-        <member name="T:CorePanda.WorkGiver_DoBillWell">
-            <summary> Allow pawns to work at the well </summary>
-        </member>
-        <member name="P:CorePanda.WorkGiver_DoBillWell.PotentialWorkThingRequest">
-            <summary> Request a well </summary>
-        </member>
-        <member name="P:CorePanda.WorkGiver_DoBillWell.PathEndMode">
-            <summary> Set the path end to the interaction cell </summary>
-        </member>
-        <member name="M:CorePanda.WorkGiver_DoBillWell.HasJobOnThing(Verse.Pawn,Verse.Thing)">
-            <summary> Make sure the pawn can work here </summary>
-        </member>
-        <member name="M:CorePanda.WorkGiver_DoBillWell.JobOnThing(Verse.Pawn,Verse.Thing)">
-            <summary> Setup the job to use </summary>
         </member>
     </members>
 </doc>
