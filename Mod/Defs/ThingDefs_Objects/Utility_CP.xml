@@ -19,7 +19,7 @@
 		</graphicData>
 		<uiIconPath>Cupro/Object/Utility/RainBarrel/RainBarrel_Full</uiIconPath>
 		<fillPercent>0.4</fillPercent>
-		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<costList>
 			<WoodLog>30</WoodLog>
 		</costList>
@@ -30,7 +30,7 @@
 		<statBases>
 			<MaxHitPoints>120</MaxHitPoints>
 			<WorkToMake>500</WorkToMake>
-			<Flammability>1.7</Flammability>
+			<Flammability>0.7</Flammability>
 			<Beauty>1</Beauty>
 			<Cleanliness>1</Cleanliness>
 		</statBases>

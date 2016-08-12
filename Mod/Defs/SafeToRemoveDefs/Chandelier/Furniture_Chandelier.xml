@@ -84,7 +84,7 @@
 	<!-- =============== Glass =============== -->
 	
 	<ThingDef ParentName="ChanPart_Support_Base">
-		<defName>ChanPart_Support_Glass_1x1</defName>
+		<defName>ChanPart_Support_1x1_Glass</defName>
 		<label>small chandelier (glass)</label>
 		<description>A simple chandelier with a glass bowl underneath. Can be hung from the ceiling over most objects.</description>
 		<graphicData>
@@ -113,7 +113,7 @@
 	</ThingDef>
 	
 	<ThingDef ParentName="ChanPart_Support_Base">
-		<defName>ChanPart_Support_Glass_2x2</defName>
+		<defName>ChanPart_Support_2x2_Glass</defName>
 		<label>chandelier (glass)</label>
 		<description>A simple chandelier with a glass bowl underneath. Can be hung from the ceiling over most objects.</description>
 		<graphicData>
@@ -142,7 +142,7 @@
 	</ThingDef>
 	
 	<ThingDef ParentName="ChanPart_Support_Base">
-		<defName>ChanPart_Support_Glass_3x3</defName>
+		<defName>ChanPart_Support_3x3_Glass</defName>
 		<label>large chandelier (glass)</label>
 		<description>A simple chandelier with a glass bowl underneath. Can be hung from the ceiling over most objects.</description>
 		<graphicData>
@@ -173,7 +173,7 @@
 	<!-- =============== Quartz =============== -->
 	
 	<ThingDef ParentName="ChanPart_Support_Base">
-		<defName>ChanPart_Support_Quartz_1x1</defName>
+		<defName>ChanPart_Support_1x1_Quartz</defName>
 		<label>small chandelier (quartz)</label>
 		<description>A simple chandelier with a quartz bowl underneath. Can be hung from the ceiling over most objects.</description>
 		<graphicData>
@@ -202,7 +202,7 @@
 	</ThingDef>
 	
 	<ThingDef ParentName="ChanPart_Support_Base">
-		<defName>ChanPart_Support_Quartz_2x2</defName>
+		<defName>ChanPart_Support_2x2_Quartz</defName>
 		<label>chandelier (quartz)</label>
 		<description>A simple chandelier with a quartz bowl underneath. Can be hung from the ceiling over most objects.</description>
 		<graphicData>
@@ -231,7 +231,7 @@
 	</ThingDef>
 	
 	<ThingDef ParentName="ChanPart_Support_Base">
-		<defName>ChanPart_Support_Quartz_3x3</defName>
+		<defName>ChanPart_Support_3x3_Quartz</defName>
 		<label>large chandelier (quartz)</label>
 		<description>A simple chandelier with a quartz bowl underneath. Can be hung from the ceiling over most objects.</description>
 		<graphicData>
@@ -264,7 +264,7 @@
 	
 	
 	<ThingDef ParentName="ChanPart_Bowl_Base">
-		<defName>ChanPart_Bowl_1x1</defName>
+		<defName>ChanPart_1x1_Bowl</defName>
 		<label>chandelier bowl</label>
 		<description>null</description>
 		<graphicData>
@@ -274,7 +274,7 @@
 	</ThingDef>
 	
 	<ThingDef ParentName="ChanPart_Bowl_Base">
-		<defName>ChanPart_Bowl_2x2</defName>
+		<defName>ChanPart_2x2_Bowl</defName>
 		<label>chandelier bowl</label>
 		<description>null</description>
 		<graphicData>
@@ -284,7 +284,7 @@
 	</ThingDef>
 	
 	<ThingDef ParentName="ChanPart_Bowl_Base">
-		<defName>ChanPart_Bowl_3x3</defName>
+		<defName>ChanPart_3x3_Bowl</defName>
 		<label>chandelier bowl</label>
 		<description>null</description>
 		<graphicData>

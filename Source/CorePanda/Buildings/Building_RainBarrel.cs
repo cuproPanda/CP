@@ -17,7 +17,7 @@ namespace CorePanda {
 
     public override Graphic Graphic {
       get {
-        if (ContainedWater > (maxWater * 0.6f)) {
+        if (ContainedWater > (maxWater * 0.7f)) {
           return BarrelFull;
         }
         if (ContainedWater > (maxWater * 0.3f)) {
@@ -83,8 +83,16 @@ namespace CorePanda {
     private void CalculateWater() {
       // If there is sufficient precipitation
       if ((Find.WeatherManager.RainRate > 0.2f || Find.WeatherManager.SnowRate > 0.7f) && !Position.Roofed()) {
-        AddOrRemoveWater(1.8f);
+        AddOrRemoveWater(2f);
       }
+
+      // Simulate evaporation
+      float temp = GenTemperature.GetTemperatureForCell(Position);
+      float evaporation = 0.0001f;
+      if (temp >= 20f) {
+        evaporation = (temp - 19.9f) / 100f;
+      }
+      AddOrRemoveWater(-evaporation);
 
       // If the well has 1200 water or more, there's enough water to fill another bucket
       if (containedWaterInt >= bucketVolume) {
