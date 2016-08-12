@@ -49,7 +49,7 @@ Materials needed to upgrade: \n{2}
 	<CP_WaterLevel>Water level</CP_WaterLevel>
 	<CP_EmptyWell>Empty well</CP_EmptyWell>
 	<CP_EmptyWellDesc>Gather water into buckets to be hauled away.</CP_EmptyWellDesc>
-	<CP_TooManyBuckets>There are currently too many buckets at the well. Haul existing buckets away.</CP_TooManyBuckets>
+	<CP_TooManyBuckets>There are currently too many buckets at the {0}. Haul existing buckets away.</CP_TooManyBuckets>
 	<CP_Buckets>Buckets available</CP_Buckets>
 	
 
