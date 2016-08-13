@@ -30,8 +30,6 @@ namespace CorePanda {
     public override void SpawnSetup() {
       base.SpawnSetup();
 
-      Log.Warning(def.LabelCap + " spawned at " + Position.ToIntVec2);
-
       // Get the map's rainfall, at a min of 100 and a max of 1000,
       // then divide by 1000. Values will be somewhere between 0.1f and 1.0f
       biomeMultiplier = Mathf.Min(Mathf.Max(Find.Map.WorldSquare.rainfall, 100), 1000f) / 1000;
