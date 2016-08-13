@@ -301,7 +301,7 @@
             <summary>
             Add water to the tank based on weather and biome
             </summary>
-            <param name="divisor">125f is a good starting divisor for a 1-cell tank that accepts water every tick</param>
+            <param name="divisor">12.5f is a good starting divisor for a 1-cell tank that accepts water every tick</param>
         </member>
         <member name="M:CorePanda.CompRainTank.AddWaterDirect(System.Single)">
             <summary>

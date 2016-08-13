@@ -94,7 +94,7 @@ namespace CorePanda {
       stringBuilder.Append(base.GetInspectString());
 
       // Display the water level
-      stringBuilder.AppendLine("CP_WaterLevel".Translate() + ": " + containedWaterInt.ToString("#####0"));
+      stringBuilder.AppendLine("CP_WaterLevel".Translate() + ": " + containedWaterInt.ToString("N0"));
 
       // Display whether there's enough water to fill a bucket
       stringBuilder.AppendLine("CP_Buckets".Translate() + ": " + Mathf.FloorToInt(containedWaterInt / bucketVolume).ToString());
