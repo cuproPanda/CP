@@ -4,13 +4,13 @@ using UnityEngine;
 using Verse;
 
 namespace CorePanda {
-
+  [StaticConstructorOnStartup]
   internal class Building_RainBarrel : Building_WaterGatherer {
 
-    private Graphic barrelSealed;
-    private Graphic barrelEmpty;
-    private Graphic barrelPartial;
-    private Graphic barrelFull;
+    private static readonly Graphic barrelSealed  = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Sealed");
+    private static readonly Graphic barrelEmpty   = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Empty");
+    private static readonly Graphic barrelPartial = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Partial");
+    private static readonly Graphic barrelFull    = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Full");
     private bool isSealed = false;
 
     protected override float maxWater {
@@ -36,16 +36,6 @@ namespace CorePanda {
     public override void ExposeData() {
       base.ExposeData();
       Scribe_Values.LookValue(ref isSealed, "CP_RainBarrel_isSealed", false);
-    }
-
-
-    public override void SpawnSetup() {
-      base.SpawnSetup();
-
-      barrelSealed = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Sealed");
-      barrelEmpty = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Empty");
-      barrelPartial = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Partial");
-      barrelFull = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Full");
     }
 
 
