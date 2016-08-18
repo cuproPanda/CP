@@ -9,18 +9,18 @@
             Dries mudbricks in the sunlight
             </summary>
         </member>
-        <member name="M:CorePanda.Building_DryingMudbricks.SpawnSetup">
-            <summary></summary>
-        </member>
         <member name="P:CorePanda.Building_DryingMudbricks.DrawColor">
             <summary>
             Change the color depending on drying progress
             </summary>
         </member>
-        <member name="M:CorePanda.Building_DryingMudbricks.TickRare">
+        <member name="M:CorePanda.Building_DryingMudbricks.ExposeData">
             <summary></summary>
         </member>
-        <member name="M:CorePanda.Building_DryingMudbricks.ExposeData">
+        <member name="M:CorePanda.Building_DryingMudbricks.SpawnSetup">
+            <summary></summary>
+        </member>
+        <member name="M:CorePanda.Building_DryingMudbricks.TickRare">
             <summary></summary>
         </member>
         <member name="M:CorePanda.Building_DryingMudbricks.GetInspectString">
@@ -39,6 +39,9 @@
             Adds comps to the vent
             </summary>
         </member>
+        <member name="M:CorePanda.Building_Vent.ExposeData">
+            <summary> Handle loading data </summary>
+        </member>
         <member name="M:CorePanda.Building_Vent.SpawnSetup">
             <summary></summary>
         </member>
@@ -51,15 +54,18 @@
         <member name="M:CorePanda.Building_Vent.TickRare">
             <summary> Equalize temperature and tick each comp </summary>
         </member>
-        <member name="M:CorePanda.Building_Vent.ExposeData">
-            <summary> Handle loading data </summary>
-        </member>
         <member name="T:CorePanda.Building_WindowGlower">
             <summary>
             Simulates light coming in through a window
             </summary>
         </member>
+        <member name="M:CorePanda.Building_WindowGlower.ExposeData">
+            <summary></summary>
+        </member>
         <member name="M:CorePanda.Building_WindowGlower.SpawnSetup">
+            <summary></summary>
+        </member>
+        <member name="M:CorePanda.Building_WindowGlower.DeSpawn">
             <summary></summary>
         </member>
         <member name="M:CorePanda.Building_WindowGlower.TickRare">
@@ -72,12 +78,12 @@
             Find an adjacent window
             </summary>
         </member>
-        <member name="M:CorePanda.Building_WindowGlower.UpdateGlow">
+        <member name="M:CorePanda.Building_WindowGlower.UpdateGlow(CorePanda.WindowGlow)">
             <summary></summary>
         </member>
         <member name="T:CorePanda.Building_WindowSpawner">
             <summary>
-            Builds a window and a glower, then destroys itself
+            Destroys itself, then builds a window and a glower
             </summary>
         </member>
         <member name="M:CorePanda.Building_WindowSpawner.SpawnSetup">
@@ -295,12 +301,22 @@
             <summary>
             Add water to the tank based on weather and biome
             </summary>
-            <param name="divisor">125f is a good starting divisor for a 1-cell tank that accepts water every tick</param>
+            <param name="divisor">12.5f is a good starting divisor for a 1-cell tank that accepts water every tick</param>
+        </member>
+        <member name="M:CorePanda.CompRainTank.AddWaterDirect(System.Single)">
+            <summary>
+            Add water to the tank directly
+            </summary>
         </member>
         <member name="M:CorePanda.CompRainTank.UseWater(System.Single)">
             <summary>
             Consume water from the tank
             <para>Make sure there is enough water stored prior to calling this</para>
+            </summary>
+        </member>
+        <member name="M:CorePanda.CompRainTank.Notify_UsedThisTick">
+            <summary>
+            Consume water from the tank per tick
             </summary>
         </member>
         <member name="T:CorePanda.CompHanger">
@@ -352,14 +368,14 @@
         <member name="T:CorePanda.HangingType">
             <summary>The thing to hang on to</summary>
         </member>
+        <member name="F:CorePanda.HangingType.None">
+            <summary> Data is missing </summary>
+        </member>
         <member name="F:CorePanda.HangingType.Wall">
             <summary> Hang onto a wall </summary>
         </member>
         <member name="F:CorePanda.HangingType.Ceiling">
             <summary> Hang onto the ceiling </summary>
-        </member>
-        <member name="F:CorePanda.HangingType.None">
-            <summary> Data is missing </summary>
         </member>
         <member name="T:CorePanda.WallHeight">
             <summary> The height this object is on a wall, used for conflicts </summary>
@@ -476,6 +492,9 @@
             Shows how much the weather is affecting perceived sunlight levels
             </summary>
         </member>
+        <member name="F:CorePanda.WeatherLight.None">
+            <summary> Data has not been processed yet </summary>
+        </member>
         <member name="F:CorePanda.WeatherLight.Bright">
             <summary> Weather is not affecting the sunlight at all </summary>
         </member>
@@ -485,8 +504,27 @@
         <member name="F:CorePanda.WeatherLight.Dark">
             <summary> Weather is blocking a lot of sunlight </summary>
         </member>
-        <member name="F:CorePanda.WeatherLight.None">
-            <summary> Data has not been processed yet </summary>
+        <member name="T:CorePanda.WindowGlow">
+            <summary>
+            Holds data for a window's brightness color, radius, beauty, and if it has an overlight
+            </summary>
+        </member>
+        <member name="T:CorePanda.WindowManager">
+            <summary>
+            Tells each WindowGlower what stats it should have, so each one doesn't have to calculate the same stats
+            </summary>
+        </member>
+        <member name="M:CorePanda.WindowManager.MapComponentTick">
+            <summary> Update the windows every TickRare, as needed </summary>
+        </member>
+        <member name="M:CorePanda.WindowManager.GlowStats">
+            <summary> Determine what stats to use based on factored sunlight </summary>
+        </member>
+        <member name="M:CorePanda.WindowManager.Register(CorePanda.Building_WindowGlower)">
+            <summary> Add the given WindowGlower to the list of current glowers on the map </summary>
+        </member>
+        <member name="M:CorePanda.WindowManager.Deregister(CorePanda.Building_WindowGlower)">
+            <summary> Remove the given WindowGlower from the list of current glowers on the map </summary>
         </member>
     </members>
 </doc>

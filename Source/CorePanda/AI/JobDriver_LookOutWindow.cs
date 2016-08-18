@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
+using UnityEngine;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -48,6 +49,8 @@ namespace CorePanda {
       // TargetIndex.A is the window glower
       // TargetIndex.B is the window
 
+      Building_WindowGlower glower = TargetA.Thing as Building_WindowGlower;
+
       // Set fail conditions
       this.FailOnDespawnedOrNull(TargetIndex.A);
       this.FailOnDestroyedOrNull(TargetIndex.B);
@@ -60,17 +63,29 @@ namespace CorePanda {
 
       // Look out the window
       Toil low = new Toil();
+      JoyKindDef joyKind = DefDatabase<JobDef>.GetNamed("CP_Job_LookOutWindow").joyKind;
       low.socialMode = RandomSocialMode.Normal;
       low.tickAction = () => {
         base.WatchTickAction();
+        if (glower != null) {
+          actor.needs.joy.GainJoy(Mathf.Max(glower.WindowViewBeauty / 5, 0f) * 0.000144f, joyKind);
+        }
         actor.Drawer.rotator.FaceCell(TargetB.Cell);
       };
       low.defaultCompleteMode = ToilCompleteMode.Delay;
       low.defaultDuration = CurJob.def.joyDuration;
       low.AddFinishAction(() => {
-        Thought_Memory thought_Memory = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("CP_LookedOutWindow"));
-        // Make this give a better mood if the pawn has cabin fever
-        thought_Memory.moodPowerFactor = (actor.needs.mood.thoughts.Thoughts.Find((Thought t) => t.def == ThoughtDef.Named("CabinFever")) != null) ? 1.5f : 1f;
+        Thought_Memory thought_Memory = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("CP_LookedOutWindowRegular"));
+        Thought cabinFever = actor.needs.mood.thoughts.Thoughts.Find((Thought t) => t.def == ThoughtDef.Named("CabinFever"));
+
+        if (cabinFever != null) {
+          thought_Memory = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("CP_LookedOutWindowCabinFever"));
+          
+          if (cabinFever.CurStageIndex == 1) {
+            thought_Memory.moodPowerFactor = 1.5f;
+          }
+        }
+
         pawn.needs.mood.thoughts.memories.TryGainMemoryThought(thought_Memory);
       });
       yield return low;

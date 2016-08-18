@@ -6,6 +6,7 @@
 		<label>drinks</label>
 		<parent>Foods</parent>
 		<iconPath>Cupro/UI/Icons/DrinksCategory</iconPath>
+		<resourceReadoutRoot>true</resourceReadoutRoot>
 	</ThingCategoryDef>
 
 </ThingCategoryDefs>

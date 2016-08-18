@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
+using UnityEngine;
 using RimWorld;
 using Verse;
 
@@ -9,26 +9,34 @@ namespace CorePanda {
   /// Simulates light coming in through a window
   /// </summary>
   public class Building_WindowGlower : Building {
-    // Comps used
+
+    public IntVec3 windowPos;
+    public IntVec3 outside;
+
     private CompGlower glowComp;
-    private CompSunlight sunlightComp;
 
-    private ColorInt brightness;                // The color/brightness of the light. Used for more realistic light
-    private float radius;                       // The current radius of light, used for twilight
-    private float beauty;                       // The beauty value to set, based off incoming light  
+    private int tickRares = 0;
+    private float cachedWindowViewBeauty = 0f;
 
+    private WindowManager mgr = Find.Map.GetComponent<WindowManager>();
 
-    // Get adjacent cells
-    private List<IntVec3> cachedAdjCellsCardinal;
-    private List<IntVec3> AdjCellsCardinalInBounds {
+    public float WindowViewBeauty {
       get {
-        if (cachedAdjCellsCardinal == null) {
-          cachedAdjCellsCardinal = (from c in GenAdj.CellsAdjacentCardinal(this)
-                                    where c.InBounds()
-                                    select c).ToList();
+        if (cachedWindowViewBeauty == 0f) {
+          GetWindowViewBeauty();
         }
-        return cachedAdjCellsCardinal;
+        return cachedWindowViewBeauty;
       }
+    }
+
+
+    /// <summary></summary>
+    public override void ExposeData() {
+      base.ExposeData();
+      Scribe_Values.LookValue(ref windowPos, "CP_WindowPosition", IntVec3.Invalid);
+      Scribe_Values.LookValue(ref outside, "CP_OutsidePosition", IntVec3.Invalid);
+      Scribe_Values.LookValue(ref tickRares, "CP_WindowGlowerTickRares", 0);
+      Scribe_Values.LookValue(ref cachedWindowViewBeauty, "CP_WindowViewBeauty", 0f);
     }
 
 
@@ -36,10 +44,17 @@ namespace CorePanda {
     public override void SpawnSetup() {
       base.SpawnSetup();
       glowComp = GetComp<CompGlower>();
-      sunlightComp = GetComp<CompSunlight>();
-      UpdateGlow();
+      mgr.Register(this);
+      Find.GlowGrid.RegisterGlower(glowComp);
+      GetWindowViewBeauty();
     }
 
+
+    /// <summary></summary>
+    public override void DeSpawn() {
+      mgr.Deregister(this);
+      base.DeSpawn();
+    }
 
 
     /// <summary>
@@ -48,7 +63,12 @@ namespace CorePanda {
     public override void TickRare() {
       base.TickRare();
       GetAdjacentWindow();
-      UpdateGlow();
+
+      if (tickRares % 15 == 0) {
+        GetWindowViewBeauty();
+      }
+
+      tickRares++;
     }
 
 
@@ -56,14 +76,11 @@ namespace CorePanda {
     /// Find an adjacent window
     /// </summary>
     private void GetAdjacentWindow() {
-      for (int i = 0; i < AdjCellsCardinalInBounds.Count; i++) {
-        IntVec3 c = AdjCellsCardinalInBounds[i];
-        List<Thing> thingList = c.GetThingList();
-        for (int t = 0; t < thingList.Count; t++) {
-          if (thingList[t] != null && thingList[t].def == ThingDef.Named("CP_Window")) {
-            // If a window was found, do nothing
-            return;
-          }
+      List<Thing> thingList = windowPos.GetThingList();
+      for (int t = 0; t < thingList.Count; t++) {
+        if (thingList[t] != null && thingList[t].def == ThingDef.Named("CP_Window")) {
+          // If a window was found, do nothing
+          return;
         }
       }
       // If a window was not found, destroy this glower
@@ -73,67 +90,109 @@ namespace CorePanda {
     }
 
 
+    private float RoofedBrightnessFactor() {
+      List<IntVec3> roofCheck = GetWindowLOS(3);
+
+      int cells = 0;
+      int roofs = 0;
+      for (int t = 0; t < roofCheck.Count; t++) {
+        cells++;
+        if (Find.RoofGrid.Roofed(roofCheck[t])) {
+          roofs++;
+        }
+      }
+      return (float)(cells - roofs) / cells;
+    }
+
+
     /// <summary></summary>
-    private void UpdateGlow() {
-
-      // Set the stats based on the current sunlight
-      if (sunlightComp.FactoredSunlight >= 0.9f) {
-        brightness = new ColorInt(175, 175, 165, 0);
-        glowComp.Props.overlightRadius = 2.2f;
-        radius = 8f;
-        beauty = 25f;
-      }
-
-      else if (sunlightComp.FactoredSunlight >= 0.72f && sunlightComp.FactoredSunlight < 0.90f) {
-        brightness = new ColorInt(150, 150, 140, 0);
-        radius = 8f;
-        beauty = 20f;
-      }
-
-      else if (sunlightComp.FactoredSunlight >= 0.54f && sunlightComp.FactoredSunlight < 0.72f) {
-        brightness = new ColorInt(125, 125, 120, 0);
-        glowComp.Props.overlightRadius = 0f;
-        radius = 8f;
-        beauty = 15f;
-      }
-
-      else if (sunlightComp.FactoredSunlight >= 0.36f && sunlightComp.FactoredSunlight < 0.54f) {
-        brightness = new ColorInt(105, 105, 100, 0);
-        glowComp.Props.overlightRadius = 0f;
-        radius = 6f;
-        beauty = 10f;
-      }
-
-      else if (sunlightComp.FactoredSunlight >= 0.18f && sunlightComp.FactoredSunlight < 0.36f) {
-        brightness = new ColorInt(80, 80, 95, 0);
-        glowComp.Props.overlightRadius = 0f;
-        radius = 4f;
-        beauty = 5f;
-        ;
-      }
-
-      else if (sunlightComp.FactoredSunlight >= 0.05f && sunlightComp.FactoredSunlight < 0.18f) {
-        brightness = new ColorInt(60, 53, 75, 0);
-        glowComp.Props.overlightRadius = 0f;
-        radius = 3f;
-        beauty = 1f;
-      }
-
-      else {
-        brightness = new ColorInt(0, 0, 0, 0);
-        glowComp.Props.overlightRadius = 0f;
-        radius = 1f;
-        beauty = 0f;
-      }
+    public void UpdateGlow(WindowGlow glow) {
 
       // Update the CompGlower
-      Find.MapDrawer.MapMeshDirty(Position, MapMeshFlag.Buildings);
       Find.GlowGrid.DeRegisterGlower(glowComp);
-      glowComp.Props.glowRadius = radius;
-      glowComp.Props.glowColor = brightness;
-      def.SetStatBaseValue(StatDefOf.Beauty, beauty);
+
+      float factor = RoofedBrightnessFactor();
+
+      glowComp.Props.glowColor = glow.color * factor;
+      glowComp.Props.glowRadius = glow.radius * factor;
+      StatExtension.SetStatBaseValue(def, StatDefOf.Beauty, glow.beauty * factor);
+      if (glow.overlit) {
+        glowComp.Props.overlightRadius = 2.2f * factor;
+      }
+      if (!glow.overlit) {
+        glowComp.Props.overlightRadius = 0f;
+      }
+
       Find.MapDrawer.MapMeshDirty(Position, MapMeshFlag.Buildings);
       Find.GlowGrid.RegisterGlower(glowComp);
+    }
+
+
+    // This allows for seeing around walls/buildings
+    // that would normally not allow seeing around.
+    // TODO: efficiently remove unseen cells
+    private List<IntVec3> GetWindowLOS(int range = 15) {
+      List<IntVec3> tempCells = new List<IntVec3>();
+      List<IntVec3> cellsToSearch = new List<IntVec3>();
+
+      // Get first 3 cells
+      tempCells.Add(outside);
+      tempCells.Add(outside + IntVec3.East.RotatedBy(Rotation));
+      tempCells.Add(outside + IntVec3.West.RotatedBy(Rotation));
+
+      // Iterate over the remaining cells
+      int x = 2;
+      int z = 1;
+      while (z <= range) {
+        // Add the first cell moving forward
+        IntVec3 forward = new IntVec3(0, 0, z).RotatedBy(Rotation);
+        tempCells.Add(outside + forward);
+
+        // Add the cells to the left and right
+        for (int lt = 1; lt <= x; lt++) {
+          IntVec3 left = new IntVec3(-lt, 0, 0).RotatedBy(Rotation);
+          tempCells.Add(outside + forward + left);
+        }
+        for (int rt = 1; rt <= x; rt++) {
+          IntVec3 right = new IntVec3(rt, 0, 0).RotatedBy(Rotation);
+          tempCells.Add(outside + forward + right);
+        }
+
+        // Until 60% the range is reached, expand the width by 1
+        if (z < Mathf.FloorToInt(range * 0.6f)) {
+          x += 1; 
+        }
+        // Once more than 60% the range is reached, reduce the width by 1
+        if (z > Mathf.FloorToInt(range * 0.6f)) {
+          x -= 1;
+        }
+        // Each time, move forward by 1 until the range is reached
+        z++;
+      }
+
+      // Only add relevant cells
+      // This is done after the previous step to save if statements
+      for (int i = 0; i < tempCells.Count; i++) {
+        Building edifice = tempCells[i].GetEdifice();
+        if (tempCells[i].GetRoom() != null && tempCells[i].GetRoom() == outside.GetRoom() && 
+             (edifice == null || (edifice.def != ThingDefOf.Wall && !edifice.def.building.isNaturalRock))) {
+          cellsToSearch.Add(tempCells[i]);
+        }
+      }
+
+      return cellsToSearch;
+    }
+
+
+    private void GetWindowViewBeauty() {
+      List<IntVec3> windowView = GetWindowLOS();
+      float beauty = 0f;
+
+      for (int t = 0; t < windowView.Count; t++) {
+        beauty += BeautyUtility.CellBeauty(windowView[t]);
+      }
+
+      cachedWindowViewBeauty = beauty / windowView.Count;
     }
   }
 }

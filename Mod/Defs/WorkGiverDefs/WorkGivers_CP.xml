@@ -1,35 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <WorkGivers>
+	
 
 
 	<!-- ============= Crafting - misc ============= -->
 
-
 	<WorkGiverDef>
-		<defName>CP_DoBillsGatherWater</defName>
-		<label>gather water at well</label>
-		<giverClass>WorkGiver_DoBill</giverClass>
-		<workType>Hauling</workType>
-		<priorityInType>93</priorityInType>
-		<fixedBillGiverDefs>
-			<li>CP_Well</li>
-		</fixedBillGiverDefs>
-		<verb>gather at</verb>
-		<gerund>gathering at</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
-		<prioritizeSustains>true</prioritizeSustains>
-	</WorkGiverDef>
-
-	<WorkGiverDef>
-		<defName>CP_DoBillsCraftingTable</defName>
-		<label>craft at simple crafting table</label>
+		<defName>CP_DoSimpleBills</defName>
+		<label>do simple crafting jobs</label>
 		<giverClass>WorkGiver_DoBill</giverClass>
 		<workType>Crafting</workType>
 		<priorityInType>99</priorityInType>
 		<fixedBillGiverDefs>
 			<li>CP_TableSimpleCrafting</li>
+			<li>CP_Quern</li>
 		</fixedBillGiverDefs>
 		<verb>craft at</verb>
 		<gerund>crafting at</gerund>
@@ -75,9 +59,6 @@
 		</requiredCapacities>
 		<prioritizeSustains>true</prioritizeSustains>
 	</WorkGiverDef>
-
-
-
 
 
 </WorkGivers>

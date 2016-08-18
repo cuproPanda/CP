@@ -21,9 +21,9 @@
 
 	<TerrainDef ParentName="FloorBase">
 		<DefName>CP_CopperTile</DefName>
-		<label>copper tile</label>
+		<label>sanitary copper tile</label>
 		<RenderPrecedence>244</RenderPrecedence>
-		<Description>Copper tiles. Naturally antimicrobial tiles useful in hospitals to help prevent patients from getting various infections.</Description>
+		<Description>Naturally antimicrobial copper tiles useful in hospitals to help prevent patients from getting various infections.</Description>
 		<texturePath>Terrain/Surfaces/GenericFloorTile</texturePath>
 		<color>(100,80,20)</color>
 		<statBases>

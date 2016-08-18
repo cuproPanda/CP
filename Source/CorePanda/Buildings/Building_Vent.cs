@@ -11,7 +11,7 @@ namespace CorePanda {
   /// </summary>
   public class Building_Vent : RimWorld.Building_Vent {
 
-    private bool ventOpen = true;   // Is the vent open?
+    private bool ventOpen = true;
     private List<ThingComp> comps = new List<ThingComp>();
 
     private Texture2D tex {
@@ -23,6 +23,13 @@ namespace CorePanda {
           return ContentFinder<Texture2D>.Get("Cupro/UI/Designators/VentClosed", false);
         }
       }
+    }
+
+
+    /// <summary> Handle loading data </summary>
+    public override void ExposeData() {
+      base.ExposeData();
+      Scribe_Values.LookValue(ref ventOpen, "ventOpen", true);
     }
 
 
@@ -67,7 +74,6 @@ namespace CorePanda {
 
     /// <summary> Equalize temperature and tick each comp </summary>
     public override void TickRare() {
-
       if (ventOpen) {
         GenTemperature.EqualizeTemperaturesThroughBuilding(this, 14f); 
       }
@@ -75,13 +81,6 @@ namespace CorePanda {
       for (int c = 0; c < comps.Count; c++) {
         comps[c].CompTickRare();
       }
-    }
-
-
-    /// <summary> Handle loading data </summary>
-    public override void ExposeData() {
-      base.ExposeData();
-      Scribe_Values.LookValue(ref ventOpen, "ventOpen", true);
     }
   }
 }

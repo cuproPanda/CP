@@ -36,8 +36,8 @@ namespace CorePanda {
       }
 
       if (pit != null) {
-        GenSpawn.Spawn(pit, Position, Rotation);
         pit.SetFactionDirect(Faction.OfPlayer);
+        GenSpawn.Spawn(pit, Position, Rotation);
       }
     }
   }
