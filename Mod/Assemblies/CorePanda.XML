@@ -4,28 +4,6 @@
         <name>CorePanda</name>
     </assembly>
     <members>
-        <member name="T:CorePanda.Building_DryingMudbricks">
-            <summary>
-            Dries mudbricks in the sunlight
-            </summary>
-        </member>
-        <member name="P:CorePanda.Building_DryingMudbricks.DrawColor">
-            <summary>
-            Change the color depending on drying progress
-            </summary>
-        </member>
-        <member name="M:CorePanda.Building_DryingMudbricks.ExposeData">
-            <summary></summary>
-        </member>
-        <member name="M:CorePanda.Building_DryingMudbricks.SpawnSetup">
-            <summary></summary>
-        </member>
-        <member name="M:CorePanda.Building_DryingMudbricks.TickRare">
-            <summary></summary>
-        </member>
-        <member name="M:CorePanda.Building_DryingMudbricks.GetInspectString">
-            <summary></summary>
-        </member>
         <member name="T:CorePanda.Building_ResourcePitSpawner">
             <summary>
             Allows colonists to dig up dirt, clay, sand, or gravel
@@ -34,72 +12,17 @@
         <member name="M:CorePanda.Building_ResourcePitSpawner.SpawnSetup">
             <summary></summary>
         </member>
-        <member name="T:CorePanda.Building_Vent">
-            <summary>
-            Adds comps to the vent
-            </summary>
-        </member>
-        <member name="M:CorePanda.Building_Vent.ExposeData">
-            <summary> Handle loading data </summary>
-        </member>
-        <member name="M:CorePanda.Building_Vent.SpawnSetup">
-            <summary></summary>
-        </member>
-        <member name="M:CorePanda.Building_Vent.GetGizmos">
-            <summary> Add a button for opening and closing the vent </summary>
-        </member>
-        <member name="M:CorePanda.Building_Vent.InitializeComps">
-            <summary> Add all the comps listed in xml </summary>
-        </member>
-        <member name="M:CorePanda.Building_Vent.TickRare">
-            <summary> Equalize temperature and tick each comp </summary>
-        </member>
-        <member name="T:CorePanda.Building_WindowGlower">
-            <summary>
-            Simulates light coming in through a window
-            </summary>
-        </member>
-        <member name="M:CorePanda.Building_WindowGlower.ExposeData">
-            <summary></summary>
-        </member>
-        <member name="M:CorePanda.Building_WindowGlower.SpawnSetup">
-            <summary></summary>
-        </member>
-        <member name="M:CorePanda.Building_WindowGlower.DeSpawn">
-            <summary></summary>
-        </member>
-        <member name="M:CorePanda.Building_WindowGlower.TickRare">
-            <summary>
-            Get the sunlight, find an adjacent window, then update the glow
-            </summary>
-        </member>
-        <member name="M:CorePanda.Building_WindowGlower.GetAdjacentWindow">
-            <summary>
-            Find an adjacent window
-            </summary>
-        </member>
-        <member name="M:CorePanda.Building_WindowGlower.UpdateGlow(CorePanda.WindowGlow)">
-            <summary></summary>
-        </member>
-        <member name="T:CorePanda.Building_WindowSpawner">
-            <summary>
-            Destroys itself, then builds a window and a glower
-            </summary>
-        </member>
-        <member name="M:CorePanda.Building_WindowSpawner.SpawnSetup">
-            <summary></summary>
-        </member>
         <member name="T:CorePanda.CompProperties_Hanger">
             <summary>
             Supplies CompHanger with hanging information
             </summary>
         </member>
-        <member name="F:CorePanda.CompProperties_Hanger.HangingType">
+        <member name="F:CorePanda.CompProperties_Hanger.hangingType">
             <summary>
             What is this object hanging on?
             </summary>
         </member>
-        <member name="F:CorePanda.CompProperties_Hanger.WallHeight">
+        <member name="F:CorePanda.CompProperties_Hanger.wallHeight">
             <summary>
             If this is on a wall, how high is it?
             </summary>
@@ -112,27 +35,27 @@
             Handles stats for upgrading
             </summary>
         </member>
-        <member name="F:CorePanda.CompProperties_Upgradeable.ResearchString">
+        <member name="F:CorePanda.CompProperties_Upgradeable.researchString">
             <summary>
             The <see cref="T:Verse.ResearchProjectDef"/> DefName, if any, to unlock the upgrade
             </summary>
         </member>
-        <member name="F:CorePanda.CompProperties_Upgradeable.UpgradeTex">
+        <member name="F:CorePanda.CompProperties_Upgradeable.upgradeTex">
             <summary>
             The <see cref="T:Verse.ContentFinder`1"/> string location of the button texture (Things/UI/Designators/ExampleTexture)
             </summary>
         </member>
-        <member name="F:CorePanda.CompProperties_Upgradeable.BlueprintThingDef">
+        <member name="F:CorePanda.CompProperties_Upgradeable.blueprintThingDef">
             <summary>
             The <see cref="T:Verse.ThingDef"/> DefName for the upgraded ThingDef (ElectricSmithy)
             </summary>
         </member>
-        <member name="F:CorePanda.CompProperties_Upgradeable.UpgradeDescString">
+        <member name="F:CorePanda.CompProperties_Upgradeable.upgradeDescString">
             <summary>
             The complete string for the upgrade button's description
             </summary>
         </member>
-        <member name="F:CorePanda.CompProperties_Upgradeable.UpgradeLabelString">
+        <member name="F:CorePanda.CompProperties_Upgradeable.upgradeLabelString">
             <summary>
             The complete string for the upgrade button's label
             </summary>
@@ -145,10 +68,10 @@
             Allows XML-editing of solar power output
             </summary>
         </member>
-        <member name="F:CorePanda.CompProperties_VariableSolarPower.FullSunPower">
+        <member name="F:CorePanda.CompProperties_VariableSolarPower.fullSunPower">
             Public to allow XML editing
         </member>
-        <member name="F:CorePanda.CompProperties_VariableSolarPower.NightPower">
+        <member name="F:CorePanda.CompProperties_VariableSolarPower.nightPower">
             Public to allow XML editing
         </member>
         <member name="M:CorePanda.CompProperties_VariableSolarPower.#ctor">
@@ -244,17 +167,17 @@
             Pushes coldness instead of heat
             </summary>
         </member>
-        <member name="F:CorePanda.CompProperties_ColdPusher.ColdPerSecond">
+        <member name="F:CorePanda.CompProperties_ColdPusher.coldPerSecond">
             <summary>
             Strength(not temperature) of coldness to output
             </summary>
         </member>
-        <member name="F:CorePanda.CompProperties_ColdPusher.ColdPushMinTemperature">
+        <member name="F:CorePanda.CompProperties_ColdPusher.coldPushMinTemperature">
             <summary>
             The minimum temperature to push coldness, set to default
             </summary>
         </member>
-        <member name="F:CorePanda.CompProperties_ColdPusher.ConstantPush">
+        <member name="F:CorePanda.CompProperties_ColdPusher.constantPush">
             <summary>
             Does this constantly push coldness? Also used to toggle on/off state
             </summary>
@@ -342,14 +265,14 @@
         <member name="P:CorePanda.CompVariablePowerPlantSolar.Props">
             <summary> Accessor for the CompProperties </summary>
         </member>
+        <member name="P:CorePanda.CompVariablePowerPlantSolar.DesiredPowerOutput">
+            <summary> Calculate how much power is being outputted </summary>
+        </member>
         <member name="M:CorePanda.CompVariablePowerPlantSolar.PostSpawnSetup">
             <summary> Setup the sunlight component, then get sunlight </summary>
         </member>
         <member name="M:CorePanda.CompVariablePowerPlantSolar.CompTick">
             <summary> Every TickRare, update the sunlight - this doesn't need to be done every tick </summary>
-        </member>
-        <member name="P:CorePanda.CompVariablePowerPlantSolar.DesiredPowerOutput">
-            <summary> Calculate how much power is being outputted </summary>
         </member>
         <member name="M:CorePanda.CompVariablePowerPlantSolar.PostDraw">
             <summary> Draw the power bar </summary>
@@ -420,16 +343,6 @@
         <member name="M:CorePanda.Item_QuartzSpawner.SpawnSetup">
             <summary></summary>
         </member>
-        <member name="M:CorePanda.JobDriver_LookOutWindow.GetAdjacentWindow">
-            <summary>
-            Find an adjacent window
-            </summary>
-        </member>
-        <member name="T:CorePanda.JoyGiver_LookOutWindow">
-            <summary>
-            Finds the inside of a nearby window and issues a job to look out it
-            </summary>
-        </member>
         <member name="T:CorePanda.PlaceWorker_AgainstWall">
             <summary>
             Only allows an object to be placed against a wall
@@ -479,14 +392,6 @@
         <member name="M:CorePanda.PlaceWorker_Roofed.AllowsPlacing(Verse.BuildableDef,Verse.IntVec3,Verse.Rot4)">
             <summary></summary>
         </member>
-        <member name="T:CorePanda.PlaceWorker_WindowInWall">
-            <summary>
-            Restricts the window to only being placed on a wall tile
-            </summary>
-        </member>
-        <member name="M:CorePanda.PlaceWorker_WindowInWall.AllowsPlacing(Verse.BuildableDef,Verse.IntVec3,Verse.Rot4)">
-            <summary></summary>
-        </member>
         <member name="T:CorePanda.WeatherLight">
             <summary>
             Shows how much the weather is affecting perceived sunlight levels
@@ -503,28 +408,6 @@
         </member>
         <member name="F:CorePanda.WeatherLight.Dark">
             <summary> Weather is blocking a lot of sunlight </summary>
-        </member>
-        <member name="T:CorePanda.WindowGlow">
-            <summary>
-            Holds data for a window's brightness color, radius, beauty, and if it has an overlight
-            </summary>
-        </member>
-        <member name="T:CorePanda.WindowManager">
-            <summary>
-            Tells each WindowGlower what stats it should have, so each one doesn't have to calculate the same stats
-            </summary>
-        </member>
-        <member name="M:CorePanda.WindowManager.MapComponentTick">
-            <summary> Update the windows every TickRare, as needed </summary>
-        </member>
-        <member name="M:CorePanda.WindowManager.GlowStats">
-            <summary> Determine what stats to use based on factored sunlight </summary>
-        </member>
-        <member name="M:CorePanda.WindowManager.Register(CorePanda.Building_WindowGlower)">
-            <summary> Add the given WindowGlower to the list of current glowers on the map </summary>
-        </member>
-        <member name="M:CorePanda.WindowManager.Deregister(CorePanda.Building_WindowGlower)">
-            <summary> Remove the given WindowGlower from the list of current glowers on the map </summary>
         </member>
     </members>
 </doc>

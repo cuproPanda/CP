@@ -18,11 +18,11 @@ namespace CorePanda {
     public override void CompTickRare() {
       base.CompTickRare();
 
-      if (Props.HangingType == HangingType.None) {
+      if (Props.hangingType == HangingType.None) {
         Log.Warning(parent.def.defName + " doesn't have a HangingType defined, please notify the mod author.");
       }
 
-      if (Props.HangingType == HangingType.Wall) {
+      if (Props.hangingType == HangingType.Wall) {
         // Get the tile behind this object
         IntVec3 c = parent.Position - parent.Rotation.FacingCell;
         // Minify this if the wall is missing
@@ -30,14 +30,14 @@ namespace CorePanda {
           Minify();
         }
         // Minify this if a window is behind this cell
-        if (Props.WallHeight == WallHeight.High) {
+        if (Props.wallHeight == WallHeight.High) {
           if (c.GetThingList().Find(window => window.def.defName == "CP_Window") != null) {
             Minify();
           }
         }
       }
 
-      if (Props.HangingType == HangingType.Ceiling) {
+      if (Props.hangingType == HangingType.Ceiling) {
         // Minify this if the ceiling is missing
         int occCells = 0;
         int roofCells = 0;

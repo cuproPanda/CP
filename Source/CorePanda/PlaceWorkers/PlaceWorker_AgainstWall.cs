@@ -35,9 +35,11 @@ namespace CorePanda {
       }
 
       // If the current object can't hang where there is a window
-      if (hangerProps != null && hangerProps.WallHeight == WallHeight.High) {
-        if (c.GetThingList().Find(window => window.def == ThingDef.Named("CP_Window")) != null) {
-          return new AcceptanceReport("CP_WindowBlocksPlacement".Translate(new object[] { checkingDef.LabelCap }));
+      if (hangerProps != null && hangerProps.wallHeight == WallHeight.High) {
+        if (DefDatabase<ThingDef>.GetNamed("RAD_Window", false) != null) {
+          if (c.GetThingList().Find(window => window.def == ThingDef.Named("RAD_Window")) != null) {
+            return new AcceptanceReport("CP_WindowBlocksPlacement".Translate(new object[] { checkingDef.LabelCap }));
+          } 
         }
       }
 

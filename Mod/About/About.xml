@@ -3,6 +3,6 @@
   <name>CorePanda</name>
   <author>cuproPanda</author>
   <url>https://ludeon.com/forums/index.php?topic=13400.0</url>
-  <targetVersion>0.14.1241</targetVersion>
+  <targetVersion>0.15.0</targetVersion>
   <description>A collection of common features for mods. \n \n This mod must be loaded after Core, and before any mods that require it.</description>
 </ModMetaData>

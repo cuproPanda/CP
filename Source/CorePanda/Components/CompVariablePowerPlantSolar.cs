@@ -11,6 +11,10 @@ namespace CorePanda {
   [StaticConstructorOnStartup]
   public class CompVariablePowerPlantSolar : CompPowerPlant {
 
+    private static readonly Vector2 S_BarSize = new Vector2(2.3f, 0.14f);
+    private static readonly Material S_PowerPlantSolarBarFilledMat = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.5f, 0.475f, 0.1f));
+    private static readonly Material S_PowerPlantSolarBarUnfilledMat = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.15f, 0.15f, 0.15f));
+
     CompSunlight sunlightComp;
 
     private float RoofedPowerOutputFactor {
@@ -27,14 +31,17 @@ namespace CorePanda {
       }
     }
 
-    private static readonly Vector2 BarSize = new Vector2(2.3f, 0.14f);
-    private static readonly Material PowerPlantSolarBarFilledMat = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.5f, 0.475f, 0.1f));
-    private static readonly Material PowerPlantSolarBarUnfilledMat = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.15f, 0.15f, 0.15f));
-
     /// <summary> Accessor for the CompProperties </summary>
     public new CompProperties_VariableSolarPower Props {
       get {
         return (CompProperties_VariableSolarPower)props;
+      }
+    }
+
+    /// <summary> Calculate how much power is being outputted </summary>
+    protected override float DesiredPowerOutput {
+      get {
+        return Mathf.Lerp(Props.nightPower, Props.fullSunPower, sunlightComp.SimpleFactoredSunlight) * RoofedPowerOutputFactor;
       }
     }
 
@@ -58,23 +65,15 @@ namespace CorePanda {
     }
 
 
-    /// <summary> Calculate how much power is being outputted </summary>
-    protected override float DesiredPowerOutput {
-      get {
-        return Mathf.Lerp(Props.NightPower, Props.FullSunPower, sunlightComp.SimpleFactoredSunlight) * RoofedPowerOutputFactor;
-      }
-    }
-
-
     /// <summary> Draw the power bar </summary>
     public override void PostDraw() {
       base.PostDraw();
       GenDraw.FillableBarRequest r = default(GenDraw.FillableBarRequest);
       r.center = parent.DrawPos + Vector3.up * 0.1f;
-      r.size = BarSize;
-      r.fillPercent = PowerOutput / Props.FullSunPower;
-      r.filledMat = PowerPlantSolarBarFilledMat;
-      r.unfilledMat = PowerPlantSolarBarUnfilledMat;
+      r.size = S_BarSize;
+      r.fillPercent = PowerOutput / Props.fullSunPower;
+      r.filledMat = S_PowerPlantSolarBarFilledMat;
+      r.unfilledMat = S_PowerPlantSolarBarUnfilledMat;
       r.margin = 0.15f;
       Rot4 rotation = parent.Rotation;
       rotation.Rotate(RotationDirection.Clockwise);

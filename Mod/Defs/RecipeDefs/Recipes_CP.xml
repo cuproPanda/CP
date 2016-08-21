@@ -408,12 +408,12 @@
 		</recipeUsers>
 	</RecipeDef>
 
-	<RecipeDef>
+	<RecipeDef Name="RefineRubber">
 		<defName>CP_RefineRubber</defName>
 		<label>refine rubber</label>
-		<description>Extract and bake raw rubber into usable sheets.</description>
+		<description>Extract and bake raw rubber into usable sheets. Makes 5 sheets of rubber.</description>
 		<jobString>Refining rubber.</jobString>
-		<workAmount>800</workAmount>
+		<workAmount>1000</workAmount>
 		<workSpeedStat>CookSpeed</workSpeedStat>
 		<effectWorking>Smelt</effectWorking>
 		<soundWorking>Recipe_Smelt</soundWorking>
@@ -440,9 +440,6 @@
 				<li>CP_RawRubber</li>
 			</thingDefs>
 		</defaultIngredientFilter>
-		<recipeUsers>
-			<li>CP_Furnace</li>
-		</recipeUsers>
 		<skillRequirements>
 			<li>
 				<skill>Cooking</skill>
@@ -450,6 +447,13 @@
 			</li>
 		</skillRequirements>
 		<workSkill>Cooking</workSkill>
+	</RecipeDef>
+    <RecipeDef ParentName="RefineRubber">
+		<defName>CP_RefineRubberSmelter</defName>
+		<workAmount>800</workAmount>
+		<recipeUsers>
+			<li>ElectricSmelter</li>
+		</recipeUsers>
 	</RecipeDef>
 
 

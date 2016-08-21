@@ -4,6 +4,13 @@ TODO:
 
 -->
 
+15.00:
+Added RainBarrels for gathering water
+Wells cool rooms down slightly
+Well gains water over time based on environment
+Wells and RainBarrels instantly output water via gizmo
+
+
 14.03:
 Added Quern for grinding resources without research
 

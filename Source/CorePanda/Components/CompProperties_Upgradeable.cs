@@ -8,27 +8,27 @@ namespace CorePanda {
     /// <summary>
     /// The <see cref="ResearchProjectDef"/> DefName, if any, to unlock the upgrade
     /// </summary>
-    public string ResearchString;
+    public string researchString;
 
     /// <summary>
     /// The <see cref="ContentFinder{T}"/> string location of the button texture (Things/UI/Designators/ExampleTexture)
     /// </summary>
-    public string UpgradeTex;
+    public string upgradeTex;
 
     /// <summary>
     /// The <see cref="ThingDef"/> DefName for the upgraded ThingDef (ElectricSmithy)
     /// </summary>
-    public string BlueprintThingDef;
+    public string blueprintThingDef;
 
     /// <summary>
     /// The complete string for the upgrade button's description
     /// </summary>
-    public string UpgradeDescString;
+    public string upgradeDescString;
 
     /// <summary>
     /// The complete string for the upgrade button's label
     /// </summary>
-    public string UpgradeLabelString;
+    public string upgradeLabelString;
 
 
     /// <summary></summary>

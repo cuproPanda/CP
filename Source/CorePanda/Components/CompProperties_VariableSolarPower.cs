@@ -6,9 +6,9 @@ namespace CorePanda {
   /// </summary>
   public class CompProperties_VariableSolarPower : CompProperties_Power{
     /// Public to allow XML editing
-    public float FullSunPower = 1700f;
+    public float fullSunPower = 1700f;
     /// Public to allow XML editing
-    public float NightPower = 0f;
+    public float nightPower = 0f;
 
     /// <summary> Connect this to CompProperties_VariableSolarPower </summary>
     public CompProperties_VariableSolarPower() {

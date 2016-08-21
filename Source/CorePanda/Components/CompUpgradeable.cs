@@ -23,11 +23,11 @@ namespace CorePanda {
     /// </summary>
     public override IEnumerable<Command> CompGetGizmosExtra() {
 
-      if (Props.ResearchString == null || (Props.ResearchString != null && ResearchProjectDef.Named(Props.ResearchString).IsFinished)) {
+      if (Props.researchString == null || (Props.researchString != null && ResearchProjectDef.Named(Props.researchString).IsFinished)) {
         Command_Action upgrade = new Command_Action() {
-          icon = ContentFinder<Texture2D>.Get(Props.UpgradeTex, false),
-          defaultDesc = Props.UpgradeDescString,
-          defaultLabel = Props.UpgradeLabelString,
+          icon = ContentFinder<Texture2D>.Get(Props.upgradeTex, false),
+          defaultDesc = Props.upgradeDescString,
+          defaultLabel = Props.upgradeLabelString,
           activateSound = SoundDef.Named("Click"),
           action = () => { HandlePopup(); },
         };
@@ -42,7 +42,7 @@ namespace CorePanda {
     /// </summary>
     public virtual void HandlePopup() {
 
-      ThingDef BP = ThingDef.Named(Props.BlueprintThingDef);
+      ThingDef BP = ThingDef.Named(Props.blueprintThingDef);
 
       StringBuilder stringBuilder = new StringBuilder();
       if (BP.costStuffCount != -1) {
@@ -64,7 +64,7 @@ namespace CorePanda {
       DiaNode diaNode = new DiaNode(text);
       DiaOption diaOption = new DiaOption("CP_UpgradeChoiceAccept".Translate());
       diaOption.action = delegate {
-        DestroyAndSetBlueprint(Props.BlueprintThingDef);
+        DestroyAndSetBlueprint(Props.blueprintThingDef);
       };
       diaOption.resolveTree = true;
       diaNode.options.Add(diaOption);

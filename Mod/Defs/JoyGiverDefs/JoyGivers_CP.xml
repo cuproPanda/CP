@@ -12,15 +12,4 @@
 		<joyKind>Passive</joyKind>
 	</JoyGiverDef>
 
-	<JoyGiverDef>
-		<defName>CP_Joy_LookOutWindow</defName>
-		<giverClass>CorePanda.JoyGiver_LookOutWindow</giverClass>
-		<baseChance>1</baseChance>
-		<jobDef>CP_Job_LookOutWindow</jobDef>
-		<joyKind>Meditative</joyKind>
-		<requiredCapacities>
-			<li>Sight</li>
-		</requiredCapacities>
-	</JoyGiverDef>
-
 </Defs>

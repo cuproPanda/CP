@@ -7,28 +7,28 @@ namespace CorePanda {
   [StaticConstructorOnStartup]
   internal class Building_RainBarrel : Building_WaterGatherer {
 
-    private static readonly Graphic barrelSealed  = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Sealed");
-    private static readonly Graphic barrelEmpty   = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Empty");
-    private static readonly Graphic barrelPartial = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Partial");
-    private static readonly Graphic barrelFull    = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Full");
+    private static readonly Graphic S_BarrelSealed  = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Sealed");
+    private static readonly Graphic S_BarrelEmpty   = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Empty");
+    private static readonly Graphic S_BarrelPartial = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Partial");
+    private static readonly Graphic S_BarrelFull    = GraphicDatabase.Get<Graphic_Single>("Cupro/Object/Utility/RainBarrel/RainBarrel_Full");
     private bool isSealed = false;
 
-    protected override float maxWater {
+    protected override float MaxWater {
       get { return bucketVolume * 10; }
     }
 
     public override Graphic Graphic {
       get {
         if (isSealed) {
-          return barrelSealed;
+          return S_BarrelSealed;
         }
-        if (ContainedWater > (maxWater * 0.7f)) {
-          return barrelFull;
+        if (ContainedWater > (MaxWater * 0.7f)) {
+          return S_BarrelFull;
         }
-        if (ContainedWater > (maxWater * 0.3f)) {
-          return barrelPartial;
+        if (ContainedWater > (MaxWater * 0.3f)) {
+          return S_BarrelPartial;
         }
-        return barrelEmpty;
+        return S_BarrelEmpty;
       }
     }
 

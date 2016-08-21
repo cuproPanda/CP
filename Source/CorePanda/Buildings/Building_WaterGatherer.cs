@@ -13,7 +13,7 @@ namespace CorePanda {
     protected bool hasEnoughWater = false;
     protected float biomeMultiplier;
 
-    protected virtual float maxWater { get; }
+    protected virtual float MaxWater { get; }
 
     public float ContainedWater {
       get { return containedWaterInt; }
@@ -84,7 +84,7 @@ namespace CorePanda {
       if (affectedByBiome) {
         amount *= biomeMultiplier;
       }
-      containedWaterInt = Mathf.Clamp(containedWaterInt + amount, 0, maxWater);
+      containedWaterInt = Mathf.Clamp(containedWaterInt + amount, 0, MaxWater);
     }
 
 

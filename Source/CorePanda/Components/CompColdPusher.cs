@@ -22,7 +22,7 @@ namespace CorePanda {
     /// Used with CompProperties_ColdPusher.ConstantPush to constantly push coldness
     /// </summary>
     protected virtual bool ShouldPushColdNow {
-      get { return Props.ConstantPush; }
+      get { return Props.constantPush; }
     }
 
 
@@ -49,7 +49,7 @@ namespace CorePanda {
           num2 = 0f;
         }
         float num3 = strength * num2 * 4.16666651f;
-        float num4 = GenTemperature.ControlTemperatureTempChange(pos, num3, Props.ColdPushMinTemperature);
+        float num4 = GenTemperature.ControlTemperatureTempChange(pos, num3, Props.coldPushMinTemperature);
 
         if (!Mathf.Approximately(num4, 0f)) {
           // Set the temperature
@@ -65,7 +65,7 @@ namespace CorePanda {
     /// <param name="tickDivisor">How much to divide by</param>
     public virtual void SimplePush(float tickDivisor = 60f) {
       CompProperties_ColdPusher props = this.Props;
-      float temp = GenTemperature.ControlTemperatureTempChange(parent.Position, (Props.ColdPerSecond / tickDivisor), Props.ColdPushMinTemperature);
+      float temp = GenTemperature.ControlTemperatureTempChange(parent.Position, (Props.coldPerSecond / tickDivisor), Props.coldPushMinTemperature);
       if (!Mathf.Approximately(temp, 0f)) {
         // Set the temperature
         parent.Position.GetRoom().Temperature += temp / 2;
@@ -80,8 +80,8 @@ namespace CorePanda {
       base.CompTick();
       if (this.parent.IsHashIntervalTick(60) && ShouldPushColdNow) {
         CompProperties_ColdPusher props = this.Props;
-        if (this.parent.Position.GetTemperature() > props.ColdPushMinTemperature) {
-          GenTemperature.ControlTemperatureTempChange(this.parent.Position, Props.ColdPerSecond, Props.ColdPushMinTemperature);
+        if (this.parent.Position.GetTemperature() > props.coldPushMinTemperature) {
+          GenTemperature.ControlTemperatureTempChange(this.parent.Position, Props.coldPerSecond, Props.coldPushMinTemperature);
         }
       }
     }

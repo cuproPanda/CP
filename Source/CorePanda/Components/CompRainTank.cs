@@ -9,7 +9,7 @@ namespace CorePanda {
   public class CompRainTank : ThingComp {
 
     private float waterLevelInt;
-    private float ConsumptionRatePerTick = 10f;
+    private float consumptionRatePerTick = 10f;
     private BiomeDef biomeDef = Find.Map.Biome;
     private float biomeMultiplierInt = 0f;
 
@@ -17,7 +17,7 @@ namespace CorePanda {
     /// Getter for production statistics
     /// </summary>
     public float FillRatePerTick {
-      get { return Precipitation * biomeMultiplier * 10f; }
+      get { return Precipitation * BiomeMultiplier * 10f; }
     }
     /// <summary>
     /// Getter for production statistics
@@ -50,7 +50,7 @@ namespace CorePanda {
     }
 
     // The map biome, used for fine-tuning precipitation based on dryness or freezing
-    private float biomeMultiplier {
+    private float BiomeMultiplier {
       get {
         if (biomeMultiplierInt == 0f) {
           if (biomeDef == BiomeDefOf.BorealForest ||
@@ -90,7 +90,7 @@ namespace CorePanda {
     /// <param name="divisor">12.5f is a good starting divisor for a 1-cell tank that accepts water every tick</param>
     public virtual void AddWater(float divisor = 12.5f) {
       // Calculate the water level
-      waterLevelInt = Mathf.Clamp(waterLevelInt + ((Precipitation * biomeMultiplier) / divisor), 0f, WaterLevelMax);
+      waterLevelInt = Mathf.Clamp(waterLevelInt + ((Precipitation * BiomeMultiplier) / divisor), 0f, WaterLevelMax);
     }
 
 
@@ -120,7 +120,7 @@ namespace CorePanda {
     /// Consume water from the tank per tick
     /// </summary>
     public virtual void Notify_UsedThisTick() {
-      UseWater(ConsumptionRatePerTick);
+      UseWater(consumptionRatePerTick);
     }
   }
 }

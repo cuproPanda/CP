@@ -9,12 +9,12 @@ namespace CorePanda {
     /// <summary>
     /// What is this object hanging on?
     /// </summary>
-    public HangingType HangingType = HangingType.None;
+    public HangingType hangingType = HangingType.None;
 
     /// <summary>
     /// If this is on a wall, how high is it?
     /// </summary>
-    public WallHeight WallHeight = WallHeight.None;
+    public WallHeight wallHeight = WallHeight.None;
 
     /// <summary></summary>
     public CompProperties_Hanger() {

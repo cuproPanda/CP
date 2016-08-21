@@ -9,7 +9,7 @@ namespace CorePanda {
 
     private CompColdPusher coldpusherComp;
 
-    protected override float maxWater {
+    protected override float MaxWater {
       get { return bucketVolume * 20; }
     }
 
@@ -65,7 +65,7 @@ namespace CorePanda {
         CalculateWater();
       }
 
-      if (Position.GetTemperature() > coldpusherComp.Props.ColdPushMinTemperature) {
+      if (Position.GetTemperature() > coldpusherComp.Props.coldPushMinTemperature) {
         coldpusherComp.SimplePush(60f / biomeMultiplier);
       }
     }
