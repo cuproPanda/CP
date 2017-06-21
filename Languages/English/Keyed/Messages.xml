@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<!-- Mod Name -->
+	<CorePanda>CorePanda</CorePanda>
+
+	<!-- Optional messages for ore spawning, if a player wants to spawn them -->
+	<CP_SettingsSpawnCopperOptional>Spawn copper (optional)</CP_SettingsSpawnCopperOptional>
+	<CP_SettingsSpawnLeadOptional>Spawn lead (optional)</CP_SettingsSpawnLeadOptional>
+	<CP_SettingsSpawnTinOptional>Spawn tin (optional)</CP_SettingsSpawnTinOptional>
+	<CP_SettingsSpawnAluminumOptional>Spawn aluminum (optional)</CP_SettingsSpawnAluminumOptional>
+	<CP_TooltipSpawnCopperOptional>Choose whether or not copper should spawn. No mods are installed that need it, so its uses will be limited to building or crafting.</CP_TooltipSpawnCopperOptional>
+	<CP_TooltipSpawnLeadOptional>Choose whether or not lead should spawn. No mods are installed that need it, so its uses will be limited to building or crafting.</CP_TooltipSpawnLeadOptional>
+	<CP_TooltipSpawnTinOptional>Choose whether or not tin should spawn. No mods are installed that need it, so its uses will be limited to building or crafting.</CP_TooltipSpawnTinOptional>
+	<CP_TooltipSpawnAluminumOptional>Choose whether or not aluminum should spawn. No mods are installed that need it, so its uses will be limited to building or crafting.</CP_TooltipSpawnAluminumOptional>
+
+	<!-- Required messages for ore spawning, if mods need these ores to work -->
+	<CP_SettingsSpawnCopperRequired>Spawn copper (required)</CP_SettingsSpawnCopperRequired>
+	<CP_SettingsSpawnLeadRequired>Spawn copper (required)</CP_SettingsSpawnLeadRequired>
+	<CP_SettingsSpawnTinRequired>Spawn copper (required)</CP_SettingsSpawnTinRequired>
+	<CP_SettingsSpawnAluminumRequired>Spawn copper (required)</CP_SettingsSpawnAluminumRequired>
+	<CP_TooltipSpawnCopperRequired>One or more mods are installed that require copper, so this setting cannot be changed.</CP_TooltipSpawnCopperRequired>
+	<CP_TooltipSpawnLeadRequired>One or more mods are installed that require lead, so this setting cannot be changed.</CP_TooltipSpawnLeadRequired>
+	<CP_TooltipSpawnTinRequired>One or more mods are installed that require tin, so this setting cannot be changed.</CP_TooltipSpawnTinRequired>
+	<CP_TooltipSpawnAluminumRequired>One or more mods are installed that require aluminum, so this setting cannot be changed.</CP_TooltipSpawnAluminumRequired>
+
+	<!-- Sunlight information -->
+	<CP_Bright>Weather isn't blocking any sunlight.</CP_Bright>
+	<CP_Darkened>Weather is blocking some sunlight.</CP_Darkened>
+	<CP_Dark>Weather is blocking a lot of sunlight.</CP_Dark>
+	<CP_SunlightLevel>Current sunlight level</CP_SunlightLevel>
+
+	<!-- Secondary resources from plants -->	
+	<CP_DesignatorHarvestSecondary>Harvest secondary</CP_DesignatorHarvestSecondary>
+	<CP_DesignatorHarvestSecondaryDesc>Designate colonists to harvest secondary resources.</CP_DesignatorHarvestSecondaryDesc>
+	<CP_MustDesignatePlantsWithSecondary>Must designate plants with a secondary resource.</CP_MustDesignatePlantsWithSecondary>
+	<CP_MustDesignateHarvestableSecondary>Must designate plants with a harvestable secondary resource.</CP_MustDesignateHarvestableSecondary>
+	<CP_CannotGrowBadSeason>not growing (out of season).</CP_CannotGrowBadSeason>
+
+
+	<!-- Old stuff - May need removal -->
+
+
+	<CP_Progress>Progress</CP_Progress>
+
+	<!-- Upgradeable Component -->
+	<CP_UpgradeConfirmationDialog>Are you sure you want to upgrade the {0} to a {1}? \n    Materials needed to upgrade: \n{2}
+	</CP_UpgradeConfirmationDialog>
+
+
+	<CP_UpgradeChoiceAccept>Upgrade this building</CP_UpgradeChoiceAccept>
+	<CP_UpgradeChoiceCancel>Cancel</CP_UpgradeChoiceCancel>
+
+
+	<!-- Placement Restrictors -->
+	<CP_MustBePlacedOnWall>{0} must be placed on a wall.</CP_MustBePlacedOnWall>
+	<CP_MustPlaceUnThickroofed>Can't place under a thick roof.</CP_MustPlaceUnThickroofed>
+	<CP_WindowBlocksPlacement>{0} cannot be placed on a window.</CP_WindowBlocksPlacement>
+
+
+</LanguageData>

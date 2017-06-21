@@ -1,68 +1,55 @@
 ﻿using Verse;
 
 namespace CorePanda {
-  //TODO: Change to SunlightManager, refactor all using classes
 
-  /// <summary>
-  /// Handles sunlight based on weather
-  /// </summary>
   public class CompSunlight : ThingComp {
 
-    private WeatherDef weatherDef;        // Weather reference
-    private float sunStrength;            // Strength of the sun multiplier, affected by weather
+    private WeatherDef weatherDef;
+    private float sunStrength;
 
     // Used for inspect string weather reporting
     private WeatherLight wLight = WeatherLight.None;  
 
-    /// <summary>
-    /// Used for determining if the weather is affecting the current sunlight
-    /// </summary>
+    // Used for determining if the weather is affecting the current sunlight
     public WeatherLight WeatherLight { get { return wLight; } }
 
-    /// <summary>
-    /// Returns 0.0f to 1.0f based on time and weather
-    /// <para>Requires GetSunlight() to have already been called</para>
-    /// </summary>
-    public float SimpleFactoredSunlight { // Final sunlight value based on time and weather, returns cached value
-      get { return SkyManager.CurSkyGlow * sunStrength; }
+    // Returns 0.0f to 1.0f based on time and weather
+    public float SimpleFactoredSunlight {
+      get { return parent.Map.skyManager.CurSkyGlow * sunStrength; }
     }
 
-    /// <summary>
-    /// Gets the current sunlight, then returns 0.0f to 1.0f based on time and weather
-    /// </summary>
+    // Gets the current sunlight, then returns 0.0f to 1.0f based on time and weather
     public float FactoredSunlight {
-      get { GetSunlight();  return SkyManager.CurSkyGlow * sunStrength; }
+      get { GetSunlight();  return parent.Map.skyManager.CurSkyGlow * sunStrength; }
     }
 
 
-    /// <summary>
-    /// Updates the sunlight based on weather
-    /// </summary>
+    // Updates the sunlight based on weather
     public virtual void GetSunlight() {
       // Get the current weather
-      weatherDef = Find.WeatherManager.curWeather;
+      weatherDef = parent.Map.weatherManager.curWeather;
 
       // Clear weather provides the maximum sunlight
-      if (weatherDef == WeatherDef.Named("Clear")) {
+      if (weatherDef == CpDefOf.Clear) {
         wLight = WeatherLight.Bright;
         sunStrength = 1f;
         return;
       }
       // These weathers provide 60% sunlight
-      else if (weatherDef == WeatherDef.Named("Fog") ||
-               weatherDef == WeatherDef.Named("Rain") ||
-               weatherDef == WeatherDef.Named("SnowGentle")) {
+      else if (weatherDef == CpDefOf.Fog ||
+               weatherDef == CpDefOf.Rain ||
+               weatherDef == CpDefOf.SnowGentle) {
         wLight = WeatherLight.Darkened;
         sunStrength = 0.6f;
         return;
       }
-      // These weathers get only 25% sunlight
-      else if (weatherDef == WeatherDef.Named("FoggyRain") ||
-               weatherDef == WeatherDef.Named("SnowHard") ||
-               weatherDef == WeatherDef.Named("DryThunderstorm") ||
-               weatherDef == WeatherDef.Named("RainyThunderstorm")) {
+      // These weathers get only 35% sunlight
+      else if (weatherDef == CpDefOf.FoggyRain ||
+               weatherDef == CpDefOf.SnowHard ||
+               weatherDef == CpDefOf.DryThunderstorm ||
+               weatherDef == CpDefOf.RainyThunderstorm) {
         wLight = WeatherLight.Dark;
-        sunStrength = 0.25f;
+        sunStrength = 0.35f;
         return;
       }
       // Default variable. Prevents issues when other mods add custom weather

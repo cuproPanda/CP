@@ -1,15 +1,13 @@
 ﻿namespace CorePanda {
-  /// <summary>
-  /// Shows how much the weather is affecting perceived sunlight levels
-  /// </summary>
+
   public enum WeatherLight {
-    /// <summary> Data has not been processed yet </summary>
+    // Data has not been processed yet
     None = 0,
-    /// <summary> Weather is not affecting the sunlight at all </summary>
+    // Weather is not affecting the sunlight at all
     Bright = 1,
-    /// <summary> Weather is blocking a little bit of sunlight </summary>
+    // Weather is blocking a little bit of sunlight
     Darkened = 2,
-    /// <summary> Weather is blocking a lot of sunlight </summary>
+    //Weather is blocking a lot of sunlight 
     Dark = 4
   }
 }

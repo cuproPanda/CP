@@ -7,21 +7,15 @@ using RimWorld;
 using Verse;
 
 namespace CorePanda {
-  /// <summary>
-  /// Allows buildings to be upgraded
-  /// </summary>
+
   public class CompUpgradeable : ThingComp {
 
-    /// <summary></summary>
     public CompProperties_Upgradeable Props {
       get { return (CompProperties_Upgradeable)props; }
     }
 
 
-    /// <summary>
-    /// Add a button for upgrading this building
-    /// </summary>
-    public override IEnumerable<Command> CompGetGizmosExtra() {
+    public override IEnumerable<Gizmo> CompGetGizmosExtra() {
 
       if (Props.researchString == null || (Props.researchString != null && ResearchProjectDef.Named(Props.researchString).IsFinished)) {
         Command_Action upgrade = new Command_Action() {
@@ -33,14 +27,10 @@ namespace CorePanda {
         };
         yield return upgrade;
       }
-      yield break;
     }
 
 
-    /// <summary>
-    /// Creates a popup dialog, letting the player confirm the choice to upgrade
-    /// </summary>
-    public virtual void HandlePopup() {
+    public void HandlePopup() {
 
       ThingDef BP = ThingDef.Named(Props.blueprintThingDef);
 
@@ -64,7 +54,7 @@ namespace CorePanda {
       DiaNode diaNode = new DiaNode(text);
       DiaOption diaOption = new DiaOption("CP_UpgradeChoiceAccept".Translate());
       diaOption.action = delegate {
-        DestroyAndSetBlueprint(Props.blueprintThingDef);
+        MarkForUpgrade(Props.blueprintThingDef);
       };
       diaOption.resolveTree = true;
       diaNode.options.Add(diaOption);
@@ -78,12 +68,9 @@ namespace CorePanda {
     }
 
 
-    /// <summary>
-    /// Destroys the current building, then sets the blueprint for the upgrade
-    /// </summary>
-    public virtual void DestroyAndSetBlueprint(string TDef) {
-      parent.Destroy();
-      GenConstruct.PlaceBlueprintForBuild(ThingDef.Named(TDef), parent.Position, parent.Rotation, Faction.OfPlayer, parent.Stuff);
+    public void MarkForUpgrade(string TDef) {
+      // TODO: Replace with designator
+      GenConstruct.PlaceBlueprintForBuild(ThingDef.Named(TDef), parent.Position, parent.Map, parent.Rotation, Faction.OfPlayer, parent.Stuff);
     }
   }
 }
